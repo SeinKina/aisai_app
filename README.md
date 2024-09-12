@@ -137,5 +137,66 @@ git push origin ブランチ名
 ```
 
 ## ディレクトリ構成
+このディレクトリ構造はMVVMのアーキテクチャを参考しています。
+以下はファイル構造の例です。
 ```
+lib/
+│
+├── main.dart
+│
+├── pages/
+│   ├── login/
+│   │   ├── login_page.dart
+│   │   └── sign_in_page.dart
+│   │
+│   ├── home/
+│   │   └── home_page.dart
+│   │
+│   ├── profile/
+│   │   ├── profile_create_step1.dart
+│   │   └── profile_create_step2.dart
+│   │
+│   ├── event/
+│   │   ├── event_list_page.dart
+│   │   ├── event_detail_page.dart
+│   │   └── event_registration_page.dart
+│   │
+│   ├── chat/
+│   │   ├── chat_list_page.dart
+│   │   └── chat_page.dart
+│   │
+│   ├── quest/
+│   │   └── quest_list_page.dart
+│   │
+│   └── drive/
+│       └── drive_course_page.dart
+│
+├── models/
+│   ├── user_model.dart
+│   ├── event_model.dart
+│   ├── chat_model.dart
+│   └── quest_model.dart
+│
+├── providers/
+│   ├── auth_provider.dart
+│   ├── event_provider.dart
+│   ├── profile_provider.dart
+│   └── chat_provider.dart
+│
+├── services/
+│   ├── firebase_service.dart
+│   └── location_service.dart
+│
+├── widgets/
+│   ├── custom_button.dart
+│   ├── custom_text_field.dart
+│   └── event_card.dart
+│
+└── utils/
+    ├── constants.dart
+    └── helpers.dart
+
 ```
+
+## その他参考資料
+* [Windowsでfvmを使って複数バージョンのFlutterを管理する](https://docs.gradle.org/current/userguide/compatibility.html)
