@@ -63,6 +63,13 @@
     }
     ```
 
+5. fvmを使用してFlutterアプリを実行
+
+    以下のコマンドを実行して、fvmを使用してFlutterアプリを実行します。
+    ```
+    fvm flutter run
+    ```
+
 ### Java 1.8のインストール
 1. 以下のリンクからJava 1.8をダウンロードしてインストールしてください。
     * [Java SE Development Kit 8 Downloads](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
