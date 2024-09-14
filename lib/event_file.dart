@@ -1,7 +1,10 @@
 import 'package:aisai_app/event_list_file.dart';
+import 'package:aisai_app/home_page.dart';
 import 'package:flutter/material.dart';
 
 class EventScreen extends StatefulWidget {
+  const EventScreen({super.key});
+
   @override
   _EventScreenState createState() => _EventScreenState();
 }
@@ -26,16 +29,16 @@ class _EventScreenState extends State<EventScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('イベント選択'),
+        title: const Text('イベント選択'),
       ),
       body: Column(
         children: [
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, // 1行に3つ表示
                   crossAxisSpacing: 16.0, // ボックス間のスペースを広げる
                   mainAxisSpacing: 16.0, // ボックス間のスペースを広げる
@@ -68,7 +71,7 @@ class _EventScreenState extends State<EventScreen> {
                         ),
                         // チェックマークの表示
                         if (_selectedEventIndex == index)
-                          Positioned(
+                          const Positioned(
                             top: 8,
                             right: 8,
                             child: Icon(
@@ -93,14 +96,14 @@ class _EventScreenState extends State<EventScreen> {
                               children: [
                                 Text(
                                   event[index]['place']!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Text(
                                   event[index]['date']!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                   ),
                                 ),
@@ -120,22 +123,24 @@ class _EventScreenState extends State<EventScreen> {
             child: ElevatedButton(
               onPressed: _selectedEventIndex != null
                   ? () {
-                    Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => EventlistScreen()));
-                // Email/Password login action
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MyHomePage(
+                                    title: '',
+                                  )));
+                      // Email/Password login action
                       // 次の画面へ進む処理を記述
                       print("次の画面へ進む");
                     }
                   : null, // イベントが選択されていないときは無効
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                minimumSize: const Size(double.infinity, 50), // ボタンを幅いっぱいにする
               ),
-              child: Text('次へ'),
+              child: const Text('次へ'),
             ),
           ),
-          SizedBox(height: 60),
+          const SizedBox(height: 60),
         ],
       ),
     );

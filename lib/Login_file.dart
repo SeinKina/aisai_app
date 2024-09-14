@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'profile_create_page.dart';
 
-void main() {
-  runApp(MyApp());
-}
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,12 +13,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: const LoginScreen(),
     );
   }
 }
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,14 +66,14 @@ class LoginScreen extends StatelessWidget {
             // Google Login Button
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                shadowColor: Color.fromARGB(0, 255, 255, 255),
-                minimumSize: Size(50, 50), // ボタンのサイズを指定
+                shadowColor: const Color.fromARGB(0, 255, 255, 255),
+                minimumSize: const Size(50, 50), // ボタンのサイズを指定
                 padding: EdgeInsets.zero, // 余白をなくす
               ),
               onPressed: () {
                 // ボタンが押された時の処理
               },
-              child: Container(
+              child: SizedBox(
                 height: 50, // 画像の高さ
                 child: SvgPicture.asset(
                   'assets/image/google.svg',
@@ -75,27 +81,27 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
 
             // Email Input Field
-            TextField(
+            const TextField(
               decoration: InputDecoration(
                 labelText: 'Email',
                 border: OutlineInputBorder(),
               ),
               keyboardType: TextInputType.emailAddress,
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
 
             // Password Input Field
-            TextField(
+            const TextField(
               decoration: InputDecoration(
                 labelText: 'Password',
                 border: OutlineInputBorder(),
               ),
               obscureText: true,
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
 
             // Login Button
             ElevatedButton(
@@ -103,17 +109,17 @@ class LoginScreen extends StatelessWidget {
                 Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => RegisterScreen()));
+                                  builder: (context) => const RegisterScreen()));
                 // Email/Password login action
               },
-              child: Text('Login'),
               style: ElevatedButton.styleFrom(
-                foregroundColor: Color.fromARGB(255, 255, 255, 255),
-                backgroundColor: Color.fromARGB(255, 55, 146, 226),
-                minimumSize: Size(double.infinity, 50), // Full width button
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                backgroundColor: const Color.fromARGB(255, 55, 146, 226),
+                minimumSize: const Size(double.infinity, 50), // Full width button
               ),
+              child: const Text('Login'),
             ),
-            SizedBox(height: 100),
+            const SizedBox(height: 100),
           ],
         ),
       ),

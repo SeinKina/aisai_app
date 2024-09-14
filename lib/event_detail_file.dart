@@ -5,10 +5,14 @@ class EventDetailPage extends StatefulWidget {
   final String place;
   final String date;
 
-  EventDetailPage(
-      {required this.image, required this.place, required this.date});
+  const EventDetailPage(
+      {super.key,
+      required this.image,
+      required this.place,
+      required this.date});
 
   @override
+  // ignore: library_private_types_in_public_api
   _EventDetailPageState createState() => _EventDetailPageState();
 }
 
@@ -51,7 +55,7 @@ class _EventDetailPageState extends State<EventDetailPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('イベント詳細'),
+        title: const Text('イベント詳細'),
       ),
       body: Stack(
         children: [
@@ -75,7 +79,8 @@ class _EventDetailPageState extends State<EventDetailPage>
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return SelectUserDialog(onUserSelected: _onUserSelected);
+                        return SelectUserDialog(
+                            onUserSelected: _onUserSelected);
                       },
                     );
                   },
@@ -108,7 +113,7 @@ class _EventDetailPageState extends State<EventDetailPage>
 class SelectUserDialog extends StatefulWidget {
   final VoidCallback onUserSelected; // ユーザーが選択された時のコールバック
 
-  SelectUserDialog({required this.onUserSelected});
+  const SelectUserDialog({super.key, required this.onUserSelected});
 
   @override
   _SelectUserDialogState createState() => _SelectUserDialogState();
@@ -133,11 +138,14 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
+            const Text(
               '参加するユーザーを選択',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ListView.builder(
               shrinkWrap: true, // リストビューが親のサイズに合わせる
               itemCount: users.length,
@@ -148,10 +156,10 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
                   ),
                   title: Text(
                     users[index]['name']!,
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
                   trailing: _selectedUserIndex == index
-                      ? Icon(Icons.check_circle, color: Colors.green)
+                      ? const Icon(Icons.check_circle, color: Colors.green)
                       : null,
                   onTap: () {
                     setState(() {
@@ -161,7 +169,7 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
                 );
               },
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: _selectedUserIndex != null
                   ? () {
@@ -170,9 +178,9 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
                     }
                   : null, // ユーザーが選択されていない場合は無効
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                minimumSize: const Size(double.infinity, 50), // ボタンを幅いっぱいにする
               ),
-              child: Text('選択する'),
+              child: const Text('選択する'),
             ),
           ],
         ),
