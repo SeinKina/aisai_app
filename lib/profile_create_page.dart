@@ -4,6 +4,8 @@ import './event_file.dart';
 import 'dart:io';
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
@@ -49,7 +51,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('プロフィール設定'),
+        title: const Text('プロフィール設定'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -90,7 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ? FileImage(_profileImage!)
                             : null,
                         child: _profileImage == null
-                            ? Icon(Icons.add_a_photo,
+                            ? const Icon(Icons.add_a_photo,
                                 size: 40, color: Colors.white)
                             : null, // 画像がない場合はアイコンを表示
                       ),
@@ -98,13 +100,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 70), // アイコンの下にスペースを確保
+              const SizedBox(height: 70), // アイコンの下にスペースを確保
               // 背景画像選択ボタン
               ElevatedButton(
                 onPressed: _pickBackgroundImage,
-                child: Text('背景画像を選択'),
+                child: const Text('背景画像を選択'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               // ユーザー情報入力フォーム
               Form(
                 key: _formKey,
@@ -124,7 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     TextFormField(
                       keyboardType: TextInputType.number,
                       onChanged: (value) {
@@ -135,7 +137,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           _age = parsedAge;
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content: Text('年齢は0歳以上120歳以下で入力してください。'),
                             ),
                           );
@@ -159,7 +161,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     DropdownButtonFormField(
                       value: _gender,
                       items: genders.map((String value) {
@@ -179,7 +181,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         fillColor: Colors.white.withOpacity(0.8),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     // 自己紹介入力フィールド
                     TextFormField(
                       onChanged: (value) => _bio = value,
@@ -197,21 +199,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     Center(
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => EventScreen()));
+                                  builder: (context) => const EventScreen()));
                           if (_formKey.currentState!.validate()) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('登録が完了しました！')),
+                              const SnackBar(content: Text('登録が完了しました！')),
                             );
                           }
                         },
-                        child: Text('登録'),
+                        child: const Text('登録'),
                       ),
                     ),
                   ],

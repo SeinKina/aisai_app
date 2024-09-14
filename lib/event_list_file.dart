@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import './event_detail_file.dart';
 
 class EventlistScreen extends StatefulWidget {
+  const EventlistScreen({super.key});
+
   @override
   _EventlistScreenState createState() => _EventlistScreenState();
 }
@@ -24,12 +26,12 @@ class _EventlistScreenState extends State<EventlistScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('イベント一覧'),
+        title: const Text('イベント一覧'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3, // 1行に3つ表示
             crossAxisSpacing: 16.0, // ボックス間のスペースを広げる
             mainAxisSpacing: 16.0, // ボックス間のスペースを広げる
@@ -76,14 +78,14 @@ class _EventlistScreenState extends State<EventlistScreen> {
                           children: [
                             Text(
                               event[index]['place']!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
                               event[index]['date']!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                               ),
                             ),
