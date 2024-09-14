@@ -7,7 +7,7 @@ class UserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User Page'),
+        title: const Text('プロフィール'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
