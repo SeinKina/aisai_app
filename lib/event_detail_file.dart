@@ -12,8 +12,40 @@ class EventDetailPage extends StatefulWidget {
   _EventDetailPageState createState() => _EventDetailPageState();
 }
 
-class _EventDetailPageState extends State<EventDetailPage> {
+class _EventDetailPageState extends State<EventDetailPage>
+    with SingleTickerProviderStateMixin {
   bool _eventCompleted = false; // イベントが完了したかどうかを管理
+  bool _showCheckMark = false; // チェックマークの表示管理
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 1), // アニメーションの継続時間
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _onUserSelected() {
+    setState(() {
+      _eventCompleted = true;
+      _showCheckMark = true;
+    });
+
+    // アニメーションを開始し、終了後にチェックマークを非表示にする
+    _animationController.forward(from: 0.0).then((_) {
+      setState(() {
+        _showCheckMark = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,44 +53,52 @@ class _EventDetailPageState extends State<EventDetailPage> {
       appBar: AppBar(
         title: Text('イベント詳細'),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          Image.asset(widget.image),
-          SizedBox(height: 16),
-          Text(
-            '開催場所: ${widget.place}',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 16),
-          Text(
-            '開催日: ${widget.date}',
-            style: TextStyle(fontSize: 20),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // ダイアログを表示
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return SelectUserDialog(
-                      onUserSelected: () {
-                        // ユーザーが選択されたら「イベント完了」に表示を変更
-                        setState(() {
-                          _eventCompleted = true;
-                        });
+          Column(
+            children: [
+              Image.asset(widget.image),
+              SizedBox(height: 16),
+              Text(
+                '開催場所: ${widget.place}',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 16),
+              Text(
+                '開催日: ${widget.date}',
+                style: TextStyle(fontSize: 20),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return SelectUserDialog(onUserSelected: _onUserSelected);
                       },
                     );
                   },
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                  ),
+                  child: Text(_eventCompleted ? 'イベント完了' : 'イベントへGO'),
+                ),
               ),
-              child: Text(_eventCompleted ? 'イベント完了' : 'イベントへGO'),
-            ),
+            ],
           ),
+          // チェックマークをフェードイン・フェードアウトする
+          if (_showCheckMark)
+            Center(
+              child: FadeTransition(
+                opacity: _animationController,
+                child: Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                  size: 100,
+                ),
+              ),
+            ),
         ],
       ),
     );
