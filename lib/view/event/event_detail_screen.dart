@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class EventDetailPage extends StatefulWidget {
+class EventDetailScreen extends StatefulWidget {
   final String image;
   final String place;
   final String date;
 
-  const EventDetailPage(
+  const EventDetailScreen(
       {super.key,
       required this.image,
       required this.place,
@@ -13,10 +13,10 @@ class EventDetailPage extends StatefulWidget {
 
   @override
   // ignore: library_private_types_in_public_api
-  _EventDetailPageState createState() => _EventDetailPageState();
+  _EventDetailScreenState createState() => _EventDetailScreenState();
 }
 
-class _EventDetailPageState extends State<EventDetailPage>
+class _EventDetailScreenState extends State<EventDetailScreen>
     with SingleTickerProviderStateMixin {
   bool _eventCompleted = false; // イベントが完了したかどうかを管理
   bool _showCheckMark = false; // チェックマークの表示管理
@@ -27,7 +27,7 @@ class _EventDetailPageState extends State<EventDetailPage>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1), // アニメーションの継続時間
+      duration: const Duration(seconds: 1), // アニメーションの継続時間
     );
   }
 
@@ -62,15 +62,15 @@ class _EventDetailPageState extends State<EventDetailPage>
           Column(
             children: [
               Image.asset(widget.image),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Text(
                 '開催場所: ${widget.place}',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Text(
                 '開催日: ${widget.date}',
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -85,7 +85,7 @@ class _EventDetailPageState extends State<EventDetailPage>
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                    minimumSize: const Size(double.infinity, 50), // ボタンを幅いっぱいにする
                   ),
                   child: Text(_eventCompleted ? 'イベント完了' : 'イベントへGO'),
                 ),
@@ -97,7 +97,7 @@ class _EventDetailPageState extends State<EventDetailPage>
             Center(
               child: FadeTransition(
                 opacity: _animationController,
-                child: Icon(
+                child: const Icon(
                   Icons.check_circle,
                   color: Colors.green,
                   size: 100,

@@ -1,4 +1,4 @@
-import 'package:aisai_app/Login_file.dart';
+import 'package:aisai_app/app.dart';
 import 'package:firebase_core/firebase_core.dart'; // Firebaseのコアパッケージをインポート
 import 'package:flutter/material.dart'; // Flutterのマテリアルパッケージをインポート
 
@@ -11,23 +11,4 @@ void main() async {
         DefaultFirebaseOptions.currentPlatform, // プラットフォーム固有のオプションでFirebaseを初期化
   );
   runApp(const MyApp()); // MyAppウィジェットを実行
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // このウィジェットはアプリケーションのルートです。
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutterデモ', // アプリケーションのタイトル
-      theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Colors.deepPurple), // カラースキームを設定
-        useMaterial3: true, // Material 3デザインを使用
-      ),
-      // home:  const UserPage(), // ホームページを設定
-      home: const LoginScreen(), // ホームページを設定
-    );
-  }
 }

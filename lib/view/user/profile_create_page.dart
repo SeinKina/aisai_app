@@ -1,16 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import './event_file.dart';
-import 'dart:io';
+
+import '../event/event_file.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  RegisterScreenState createState() => RegisterScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class RegisterScreenState extends State<RegisterScreen> {
   // 背景画像とプロフィール画像を格納する変数
   File? _backgroundImage;
   File? _profileImage;
@@ -19,10 +21,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   // ユーザー情報を保持する変数
   final _formKey = GlobalKey<FormState>();
   final List<String> genders = ['男性', '女性', 'その他']; // 性別の選択肢
-  String _name = '';
-  int _age = 0;
+  String name = '';
+  int age = 0;
   String _gender = '男性'; // デフォルト値
-  String _bio = ''; // 自己紹介用の変数
+  String bio = ''; // 自己紹介用の変数
 
   // 背景画像選択メソッド
   Future<void> _pickBackgroundImage() async {
@@ -113,7 +115,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Column(
                   children: [
                     TextFormField(
-                      onChanged: (value) => _name = value,
+                      onChanged: (value) => name = value,
                       decoration: InputDecoration(
                         labelText: '名前',
                         filled: true,
@@ -134,7 +136,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         if (parsedAge != null &&
                             parsedAge >= 0 &&
                             parsedAge <= 120) {
-                          _age = parsedAge;
+                          age = parsedAge;
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -184,7 +186,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     const SizedBox(height: 16),
                     // 自己紹介入力フィールド
                     TextFormField(
-                      onChanged: (value) => _bio = value,
+                      onChanged: (value) => bio = value,
                       maxLines: 5,
                       decoration: InputDecoration(
                         labelText: '自己紹介',

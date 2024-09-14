@@ -1,16 +1,16 @@
-import 'package:aisai_app/user_page.dart';
+import 'package:aisai_app/view/user/user_page.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class UserListScreen extends StatefulWidget {
+  const UserListScreen({super.key, required this.title});
 
   final String title; // ホームページのタイトル
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState(); // ホームページの状態を作成
+  State<UserListScreen> createState() => _UserListState(); // ホームページの状態を作成
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _UserListState extends State<UserListScreen> {
   final Map<String, List<String>> regionUsers = {
     "おすすめのユーザー": ["User1", "User2", "User3"],
     "辺野古エイサー": ["User4", "User5"],
