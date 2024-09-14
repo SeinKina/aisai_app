@@ -206,7 +206,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const EventScreen()));
+                                  builder: (context) =>  EventScreen()));
                           if (_formKey.currentState!.validate()) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('登録が完了しました！')),
