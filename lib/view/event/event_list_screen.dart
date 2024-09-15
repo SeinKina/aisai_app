@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../model/eventmodel/event_model.dart';
-import 'event_detail_screen.dart';
+import 'event_detail_file.dart';
 
 class EventListScreen extends StatefulWidget {
   const EventListScreen({super.key});
@@ -27,6 +26,7 @@ class EventListScreenState extends State<EventListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("イベント一覧")),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
@@ -44,15 +44,10 @@ class EventListScreenState extends State<EventListScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => EventDetailScreen(
-                      image: event[index]['image']!,
+                    builder: (context) => EventDetailPage(
+                      image: event[index]['image']!, // 必要な引数を渡す
                       place: event[index]['place']!,
                       date: event[index]['date']!,
-                      event: EventModel(
-                        image: event[index]['image']!,
-                        place: event[index]['place']!,
-                        date: event[index]['date']!,
-                      ),
                     ),
                   ),
                 );
