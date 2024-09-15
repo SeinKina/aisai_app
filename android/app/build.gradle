@@ -45,3 +45,9 @@ android {
 flutter {
     source = "../.."
 }
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:32.0.0') // 最新のBOMを使用
+    implementation 'com.google.firebase:firebase-auth' // Firebase認証
+    implementation 'com.google.android.gms:play-services-auth:20.5.0' // Google認証
+}

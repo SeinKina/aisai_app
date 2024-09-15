@@ -19,7 +19,8 @@ class ProfileCreateViewModel with ChangeNotifier {
     questModel: null,
     userLocation: '',
     userOccpation: '',
-    youthGroupFlag: false, userOccupation: '',
+    youthGroupFlag: false,
+    seinennkai: '非会員',
   );
 
   File? _backgroundImage;
@@ -59,9 +60,16 @@ class ProfileCreateViewModel with ChangeNotifier {
     notifyListeners();
   }
 
+  void updateSeinennkai(String newSeinennkai) {
+    user.seinennkai = newSeinennkai;
+    notifyListeners();
+  }
+
   void updateBio(String newBio) {
     user.bio = newBio;
-    notifyListeners();
+  
+
+  void updateSeinennkai(String s) {}  notifyListeners();
   }
 
   bool validateForm(GlobalKey<FormState> formKey) {

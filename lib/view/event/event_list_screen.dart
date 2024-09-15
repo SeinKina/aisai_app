@@ -50,7 +50,7 @@ class EventListScreenState extends State<EventListScreen> {
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, // 1行に3つ表示
+            crossAxisCount: 2, // 1行に2つ表示
             crossAxisSpacing: 16.0, // ボックス間のスペースを広げる
             mainAxisSpacing: 16.0, // ボックス間のスペースを広げる
             childAspectRatio: 0.8, // イベントボックスの縦横比

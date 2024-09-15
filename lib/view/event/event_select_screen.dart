@@ -1,5 +1,4 @@
 import 'package:aisai_app/home_screen.dart';
-import 'package:aisai_app/top/top_page.dart';
 import 'package:flutter/material.dart';
 
 class EventSelectScreen extends StatefulWidget {
@@ -14,15 +13,51 @@ class EventSelectScreenState extends State<EventSelectScreen> {
 
   // イベント情報（仮のデータ）
   final List<Map<String, String>> event = [
-    {'image': 'assets/image/event.jpg', 'place': '東京', 'date': '2024-09-15'},
-    {'image': 'assets/image/event.jpg', 'place': '大阪', 'date': '2024-09-16'},
-    {'image': 'assets/image/event.jpg', 'place': '京都', 'date': '2024-09-17'},
-    {'image': 'assets/image/event.jpg', 'place': '福岡', 'date': '2024-09-18'},
-    {'image': 'assets/image/event.jpg', 'place': '札幌', 'date': '2024-09-19'},
-    {'image': 'assets/image/event.jpg', 'place': '名古屋', 'date': '2024-09-20'},
-    {'image': 'assets/image/event.jpg', 'place': '仙台', 'date': '2024-09-21'},
-    {'image': 'assets/image/event.jpg', 'place': '広島', 'date': '2024-09-22'},
-    {'image': 'assets/image/event.jpg', 'place': '神戸', 'date': '2024-09-23'},
+    {
+      'image': 'assets/image/eisa/select_eisa_1.jpg',
+      'place': '沖縄全島エイサー',
+      'date': '2024-09-15'
+    },
+    {
+      'image': 'assets/image/eisa/select_eisa_2.jpg',
+      'place': '那覇エイサー',
+      'date': '2024-09-16'
+    },
+    {
+      'image': 'assets/image/eisa/select_eisa_3.jpg',
+      'place': '首里エイサー',
+      'date': '2024-09-17'
+    },
+    {
+      'image': 'assets/image/eisa/select_eisa_4.jpg',
+      'place': '読谷エイサー',
+      'date': '2024-09-18'
+    },
+    {
+      'image': 'assets/image/eisa/select_eisa_5.jpg',
+      'place': '名護エイサー',
+      'date': '2024-09-19'
+    },
+    {
+      'image': 'assets/image/eisa/select_eisa_6.jpg',
+      'place': '石垣島エイサー',
+      'date': '2024-09-20'
+    },
+    {
+      'image': 'assets/image/eisa/select_eisa_7.jpg',
+      'place': '宮古島エイサー',
+      'date': '2024-09-21'
+    },
+    {
+      'image': 'assets/image/eisa/select_eisa_8.jpg',
+      'place': 'うるま市エイサー',
+      'date': '2024-09-22'
+    },
+    {
+      'image': 'assets/image/eisa/select_eisa_9.jpg',
+      'place': '宜野湾エイサー',
+      'date': '2024-09-23'
+    },
   ];
 
   @override
@@ -39,7 +74,7 @@ class EventSelectScreenState extends State<EventSelectScreen> {
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, // 1行に3つ表示
+                  crossAxisCount: 2, // 1行に2つ表示
                   crossAxisSpacing: 16.0, // ボックス間のスペースを広げる
                   mainAxisSpacing: 16.0, // ボックス間のスペースを広げる
                   childAspectRatio: 0.8, // イベントボックスの縦横比を調整して大きくする
@@ -99,12 +134,14 @@ class EventSelectScreenState extends State<EventSelectScreen> {
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
+                                    fontSize: 18, // 文字の大きさを調整
                                   ),
                                 ),
                                 Text(
                                   event[index]['date']!,
                                   style: const TextStyle(
                                     color: Colors.white,
+                                    fontSize: 16, // 文字の大きさを調整
                                   ),
                                 ),
                               ],
@@ -125,7 +162,8 @@ class EventSelectScreenState extends State<EventSelectScreen> {
                   ? () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()), // ホーム画面に遷移
+                        MaterialPageRoute(
+                            builder: (context) => HomeScreen()), // ホーム画面に遷移
                       );
                     }
                   : null, // イベントが選択されていないときは無効

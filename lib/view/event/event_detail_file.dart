@@ -145,9 +145,9 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
 
   // 仮のユーザーデータ
   final List<Map<String, String>> users = [
-    {'name': '田中 太郎', 'icon': 'assets/image/youngman_29.png'},
-    {'name': '山田 花子', 'icon': 'assets/image/youngman_29.png'},
-    {'name': '佐藤 次郎', 'icon': 'assets/image/youngman_29.png'},
+    {'name': '津田　梅子', 'icon': 'assets/image/us4.jpg'},
+    {'name': '山田 花子', 'icon': 'assets/image/us2.jpg'},
+    {'name': '金城　里琴', 'icon': 'assets/image/us6.jpg'},
   ];
 
   @override

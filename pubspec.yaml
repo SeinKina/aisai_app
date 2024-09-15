@@ -45,7 +45,7 @@ dependencies:
   geolocator: ^13.0.1
   cloud_firestore: ^5.4.1
   grpc: ^4.0.1
-
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -72,6 +72,15 @@ flutter:
     - assets/image/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+    - assets/image/eisa/select_eisa_1.jpg
+    - assets/image/eisa/select_eisa_2.jpg
+    - assets/image/eisa/select_eisa_3.jpg
+    - assets/image/eisa/select_eisa_4.jpg
+    - assets/image/eisa/select_eisa_5.jpg
+    - assets/image/eisa/select_eisa_6.jpg
+    - assets/image/eisa/select_eisa_7.jpg
+    - assets/image/eisa/select_eisa_8.jpg
+    - assets/image/eisa/select_eisa_9.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
