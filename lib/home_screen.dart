@@ -1,8 +1,8 @@
 import 'package:aisai_app/chat_list_page.dart';
 import 'package:aisai_app/view/event/event_list_screen.dart';
+import 'package:aisai_app/view/mypage/my_profile_screen.dart';
 import 'package:aisai_app/view/mypage/viewmodel/my_profile_screen_viewmodel.dart';
 import 'package:aisai_app/view/user/user_list_screen.dart';
-import 'package:aisai_app/view/mypage/my_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,6 +19,24 @@ class HomeScreenState extends State<HomeScreen> {
   static final List<Widget> _widgetOptions = <Widget>[
     UserListScreen(title: 'User List'),
     EventListScreen(),
+    MyProfileScreen(
+      viewModel: MyProfileScreenViewModel(
+        userName: 'John Doe',
+        userLocation: 'New York',
+        userOccupation: 'Software Engineer',
+        eventName: 'Flutter Meetup',
+        eventDate: DateTime.now().toIso8601String(),
+        userAge: 30,
+        eventLocation: 'Central Park',
+      ),
+      userName: 'John Doe',
+      userLocation: 'New York',
+      userOccupation: 'Software Engineer',
+      eventName: 'Flutter Meetup',
+      eventDate: DateTime.now().toIso8601String(),
+      userAge: 30,
+      eventLocation: 'Central Park',
+    ),
     DMListPage()
   ];
 
@@ -31,10 +49,7 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Aisai'),
-        automaticallyImplyLeading: false,
-      ),
+      
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -47,6 +62,10 @@ class HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),
             label: 'Event List',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'My page',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.forum),

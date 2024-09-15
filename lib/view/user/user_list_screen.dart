@@ -14,9 +14,6 @@ class UserListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
       body: ListView(
         children: viewModel.regionUsers.entries.map((entry) {
           return Column(

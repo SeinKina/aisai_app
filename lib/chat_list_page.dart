@@ -9,9 +9,21 @@ class DMListPage extends StatefulWidget {
 class _DMListPageState extends State<DMListPage> {
   // 仮のDMデータ
   List<Map<String, dynamic>> dmList = [
-    {'name': '田中 太郎', 'icon': 'assets/image/user1.png', 'lastMessageTime': DateTime.now().subtract(Duration(minutes: 10))},
-    {'name': '山田 花子', 'icon': 'assets/image/user2.png', 'lastMessageTime': DateTime.now().subtract(Duration(hours: 1))},
-    {'name': '佐藤 次郎', 'icon': 'assets/image/user3.png', 'lastMessageTime': DateTime.now().subtract(Duration(days: 1))},
+    {
+      'name': '田中 太郎',
+      'icon': 'assets/image/user1.png',
+      'lastMessageTime': DateTime.now().subtract(Duration(minutes: 10))
+    },
+    {
+      'name': '山田 花子',
+      'icon': 'assets/image/user2.png',
+      'lastMessageTime': DateTime.now().subtract(Duration(hours: 1))
+    },
+    {
+      'name': '佐藤 次郎',
+      'icon': 'assets/image/user3.png',
+      'lastMessageTime': DateTime.now().subtract(Duration(days: 1))
+    },
   ];
 
   @override
@@ -22,6 +34,7 @@ class _DMListPageState extends State<DMListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('DM一覧'),
+        automaticallyImplyLeading: false,
       ),
       body: ListView.builder(
         itemCount: dmList.length,
@@ -40,7 +53,10 @@ class _DMListPageState extends State<DMListPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ChatPage(userName: dmList[index]['name'], userImage: '',),
+                  builder: (context) => ChatPage(
+                    userName: dmList[index]['name'],
+                    userImage: '',
+                  ),
                 ),
               );
             },
@@ -50,4 +66,3 @@ class _DMListPageState extends State<DMListPage> {
     );
   }
 }
-
