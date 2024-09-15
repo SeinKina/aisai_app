@@ -1,6 +1,8 @@
 import 'package:aisai_app/chat_list_page.dart';
 import 'package:aisai_app/view/event/event_list_screen.dart';
+import 'package:aisai_app/view/mypage/viewmodel/my_profile_screen_viewmodel.dart';
 import 'package:aisai_app/view/user/user_list_screen.dart';
+import 'package:aisai_app/view/mypage/my_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {

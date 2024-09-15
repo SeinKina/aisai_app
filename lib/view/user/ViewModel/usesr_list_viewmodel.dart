@@ -3,16 +3,43 @@ import '../../../model/user_model/user_model.dart';
 class UserListViewModel {
   final Map<String, List<UserModel>> regionUsers = {
     "おすすめのユーザー": [
-      UserModel(name: 'User1', age: 25, gender: '男性', bio: 'プロフィール1', email: '', password: 'password1'),
-      UserModel(name: 'User2', age: 30, gender: '女性', bio: 'プロフィール2', email: '', password: 'password2'),
-      UserModel(name: 'User3', age: 28, gender: 'その他', bio: 'プロフィール3', email: '', password: 'password3'),
-      UserModel(name: 'User4', age: 22, gender: '男性', bio: 'プロフィール4', email: '', password: 'password4'),
-      UserModel(name: 'User5', age: 26, gender: '女性', bio: 'プロフィール5', email: '', password: 'password5'),
+      UserModel(
+          name: 'たける',
+          age: 23,
+          gender: '男性',
+          bio: 'プロフィール1',
+          email: '',
+          password: 'password1'),
+      UserModel(
+          name: 'momo',
+          age: 30,
+          gender: '女性',
+          bio: 'プロフィール2',
+          password: 'password2',
+          email: ''),
+      UserModel(
+          name: 'ひよこ',
+          age: 28,
+          gender: 'その他',
+          bio: 'プロフィール3',
+          password: 'password3',
+          email: ''),
     ],
     "辺野古エイサー": [
-      UserModel(name: 'User6', age: 22, gender: '男性', bio: 'プロフィール6', email: '', password: 'password6'),
-      UserModel(name: 'User7', age: 26, gender: '女性', bio: 'プロフィール7', email: '', password: 'password7'),
-      UserModel(name: 'User8', age: 24, gender: '男性', bio: 'プロフィール8', email: '', password: 'password8'),
+      UserModel(
+          name: 'nana',
+          age: 22,
+          gender: '女性',
+          bio: 'プロフィール4',
+          password: 'password4',
+          email: ''),
+      UserModel(
+          name: 'User5',
+          age: 26,
+          gender: '女性',
+          bio: 'プロフィール5',
+          password: 'password5',
+          email: ''),
     ],
     "全島エイサー": [
       UserModel(name: 'User9', age: 20, gender: '男性', bio: 'プロフィール9', email: '', password: 'password9'),
