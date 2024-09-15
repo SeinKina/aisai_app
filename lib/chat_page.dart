@@ -4,7 +4,7 @@ class ChatPage extends StatefulWidget {
   final String userName;
   final String userImage;
 
-  ChatPage({required this.userName, required this.userImage});
+  const ChatPage({super.key, required this.userName, required this.userImage});
 
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -24,12 +24,12 @@ class _ChatPageState extends State<ChatPage> {
         });
         _messageController.clear();
         // 相手からの自動応答メッセージを追加
-        Future.delayed(Duration(milliseconds: 500), () {
+        Future.delayed(const Duration(milliseconds: 500), () {
           setState(() {
             _messages.add({
               'message': '相手のメッセージ',
               'isMe': false,
-              'userImage': 'assets/image/user_placeholder.png',
+              'userImage': 'assets/image/event_background.jpg',
             });
           });
         });
@@ -46,7 +46,7 @@ class _ChatPageState extends State<ChatPage> {
             CircleAvatar(
               backgroundImage: AssetImage(widget.userImage),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Text(widget.userName),
           ],
         ),
@@ -72,10 +72,10 @@ class _ChatPageState extends State<ChatPage> {
                         ),
                       ),
                     Container(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 14.0),
-                      margin: EdgeInsets.symmetric(vertical: 5.0),
-                      constraints: BoxConstraints(maxWidth: 200),
+                      margin: const EdgeInsets.symmetric(vertical: 5.0),
+                      constraints: const BoxConstraints(maxWidth: 200),
                       decoration: BoxDecoration(
                         color: message['isMe']
                             ? Colors.blue[200]
@@ -103,13 +103,13 @@ class _ChatPageState extends State<ChatPage> {
                 Expanded(
                   child: TextField(
                     controller: _messageController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'メッセージを入力...',
                     ),
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.send),
+                  icon: const Icon(Icons.send),
                   onPressed: _sendMessage,
                 ),
               ],

@@ -19,7 +19,7 @@ class HomeScreenState extends State<HomeScreen> {
   // 表示する画面のリスト
   static final List<Widget> _widgetOptions = <Widget>[
     UserListScreen(title: 'User List'),
-    EventListScreen(),
+    const EventListScreen(),
     UserProfileSlider(),
     DMListPage(),
     MyProfileScreen(

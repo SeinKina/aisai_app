@@ -6,7 +6,8 @@ class EventDetailPage extends StatefulWidget {
   final String date;
 
   // コンストラクタで引数を受け取る
-  EventDetailPage({
+  const EventDetailPage({
+    super.key,
     required this.image,
     required this.place,
     required this.date,
@@ -15,7 +16,6 @@ class EventDetailPage extends StatefulWidget {
   @override
   _EventDetailPageState createState() => _EventDetailPageState();
 }
-
 
 class _EventDetailPageState extends State<EventDetailPage>
     with SingleTickerProviderStateMixin {
@@ -28,7 +28,7 @@ class _EventDetailPageState extends State<EventDetailPage>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1), // アニメーションの継続時間
+      duration: const Duration(seconds: 1), // アニメーションの継続時間
     );
   }
 
@@ -56,7 +56,7 @@ class _EventDetailPageState extends State<EventDetailPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('イベント詳細'),
+        title: const Text('イベント詳細'),
       ),
       body: Stack(
         children: [
@@ -67,18 +67,19 @@ class _EventDetailPageState extends State<EventDetailPage>
               child: Column(
                 children: [
                   Image.asset(widget.image),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Text(
                     '開催場所: ${widget.place}',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Text(
                     '開催日: ${widget.date}',
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   ),
-                  SizedBox(height: 30),
-                  Text(
+                  const SizedBox(height: 30),
+                  const Text(
                     '「沖縄全島エイサーまつり」は、毎年旧盆明けの最初の週末に行われる、1956年の「コザ市誕生」を機に「全島エイサーコンクール」としてスタートし、今では沖縄の夏の風物詩として日本を代表する「まつり」の一つとなりました。\n\n'
                     '「まつり」には本島各地から選抜された青年会などの団体や、全国の姉妹都市や協賛団体からのゲストが集結します。会場に鳴り響く三線、歌、太鼓のリズムに酔いしれ、その迫力あるバチさばきに感動しながら、本場のエイサーのだいご味を思う存分味わうことが出来る一大イベントです。\n\n'
                     'まつりは3日間に渡り、金曜日のまつり初日には、国道330号コザ・ゲート通りでの「みちじゅねー」、そして土曜日の中日が沖縄市青年団協議会による「沖縄市青年まつり」日曜日が「本祭」として、全島から集められた青年会による、エイサー大会が沖縄市コザ運動公園で開催されます。\n\n'
@@ -86,7 +87,7 @@ class _EventDetailPageState extends State<EventDetailPage>
                     style: TextStyle(fontSize: 16), // 文字サイズを調整
                     textAlign: TextAlign.justify, // テキストを左右に整列
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: ElevatedButton(
@@ -102,7 +103,8 @@ class _EventDetailPageState extends State<EventDetailPage>
                               );
                             },
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                        minimumSize:
+                            const Size(double.infinity, 50), // ボタンを幅いっぱいにする
                       ),
                       child: Text(_eventCompleted ? 'イベント完了' : 'イベントへGO'),
                     ),
@@ -116,7 +118,7 @@ class _EventDetailPageState extends State<EventDetailPage>
             Center(
               child: FadeTransition(
                 opacity: _animationController,
-                child: Icon(
+                child: const Icon(
                   Icons.check_circle,
                   color: Colors.green,
                   size: 100,
@@ -132,7 +134,7 @@ class _EventDetailPageState extends State<EventDetailPage>
 class SelectUserDialog extends StatefulWidget {
   final VoidCallback onUserSelected; // ユーザーが選択された時のコールバック
 
-  SelectUserDialog({required this.onUserSelected});
+  const SelectUserDialog({super.key, required this.onUserSelected});
 
   @override
   _SelectUserDialogState createState() => _SelectUserDialogState();
@@ -143,9 +145,9 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
 
   // 仮のユーザーデータ
   final List<Map<String, String>> users = [
-    {'name': '田中 太郎', 'icon': 'assets/image/user1.png'},
-    {'name': '山田 花子', 'icon': 'assets/image/user2.png'},
-    {'name': '佐藤 次郎', 'icon': 'assets/image/user3.png'},
+    {'name': '田中 太郎', 'icon': 'assets/image/youngman_29.png'},
+    {'name': '山田 花子', 'icon': 'assets/image/youngman_29.png'},
+    {'name': '佐藤 次郎', 'icon': 'assets/image/youngman_29.png'},
   ];
 
   @override
@@ -157,14 +159,14 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
+            const Text(
               '参加するユーザーを選択',
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ListView.builder(
               shrinkWrap: true, // リストビューが親のサイズに合わせる
               itemCount: users.length,
@@ -175,10 +177,10 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
                   ),
                   title: Text(
                     users[index]['name']!,
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
                   trailing: _selectedUserIndex == index
-                      ? Icon(Icons.check_circle, color: Colors.green)
+                      ? const Icon(Icons.check_circle, color: Colors.green)
                       : null,
                   onTap: () {
                     setState(() {
@@ -188,7 +190,7 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
                 );
               },
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: _selectedUserIndex != null
                   ? () {
@@ -197,9 +199,9 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
                     }
                   : null, // ユーザーが選択されていない場合は無効
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                minimumSize: const Size(double.infinity, 50), // ボタンを幅いっぱいにする
               ),
-              child: Text('選択する'),
+              child: const Text('選択する'),
             ),
           ],
         ),
