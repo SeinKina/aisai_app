@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => const HomeScreen(), // ホーム画面のルート
         '/eventSelect': (context) => const EventListScreen(), // イベント選択画面
-        '/myprofile':(context) => ChatPage(userName: '', userImage: '',), // マイプロフィール画面
+        '/myprofile':(context) => const ChatPage(userName: '', userImage: '',), // マイプロフィール画面
         '/eventSelect': (context) => const EventSelectScreen(), // イベント選択画面
         '/myprofile': (context) => MyProfileScreen(
               viewModel: MyProfileScreenViewModel(

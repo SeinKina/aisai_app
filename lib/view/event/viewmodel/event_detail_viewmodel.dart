@@ -14,15 +14,14 @@ class EventDetailViewModel {
   // 現在位置の記憶用
   late Position _currentPosition; // 追加
 
-
   double distanceBetween(
   double latitude1,
   double longitude1,
   double latitude2,
   double longitude2,
   ) {
-    final toRadians = (double degree) => degree * pi / 180;
-    final double r = 6378137.0; // 地球の半径
+    toRadians(double degree) => degree * pi / 180;
+    const double r = 6378137.0; // 地球の半径
     final double f1 = toRadians(latitude1);
     final double f2 = toRadians(latitude2);
     final double l1 = toRadians(longitude1);

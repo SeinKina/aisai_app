@@ -181,7 +181,7 @@ class ProfileCreateScreen extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            EventSelectScreen()),
+                                            const EventSelectScreen()),
                                   );
                                 }
                               },

@@ -1,8 +1,6 @@
 import 'package:aisai_app/chat_list_page.dart';
 import 'package:aisai_app/view/event/event_list_screen.dart';
-import 'package:aisai_app/view/mypage/viewmodel/my_profile_screen_viewmodel.dart';
 import 'package:aisai_app/view/user/user_list_screen.dart';
-import 'package:aisai_app/view/mypage/my_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,8 +16,8 @@ class HomeScreenState extends State<HomeScreen> {
   // 表示する画面のリスト
   static final List<Widget> _widgetOptions = <Widget>[
     UserListScreen(title: 'User List'),
-    EventListScreen(),
-    DMListPage()
+    const EventListScreen(),
+    const DMListPage()
   ];
 
   void _onItemTapped(int index) {

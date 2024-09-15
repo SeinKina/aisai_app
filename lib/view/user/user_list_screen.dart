@@ -60,12 +60,12 @@ class UserListScreen extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  CircleAvatar(
+                                  const CircleAvatar(
                                     radius: 40.0, // アイコンのサイズを少し大きくする
                                     backgroundImage: AssetImage(
-                                        'assets/image/user_placeholder.png'), // プレースホルダー画像
+                                        'assets/image/event_background.jpg'), // プレースホルダー画像
                                   ),
-                                  SizedBox(height: 8.0),
+                                  const SizedBox(height: 8.0),
                                   Text(
                                     user.name,
                                     style: const TextStyle(fontSize: 16.0),

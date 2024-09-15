@@ -1,19 +1,29 @@
-import '../../../model/eventmodel/event_model.dart';
+import 'package:aisai_app/model/eventmodel/event_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class EventListViewModel {
-  // イベントのリスト（仮のデータ）
-  final List<EventModel> events = [
-    EventModel(image: 'assets/image/event.jpg', place: '東京', date: '2024-09-15'),
-    EventModel(image: 'assets/image/event.jpg', place: '大阪', date: '2024-09-16'),
-    EventModel(image: 'assets/image/event.jpg', place: '京都', date: '2024-09-17'),
-    EventModel(image: 'assets/image/event.jpg', place: '福岡', date: '2024-09-18'),
-    EventModel(image: 'assets/image/event.jpg', place: '札幌', date: '2024-09-19'),
-  ];
+class EventListViewmodel {
+  FirebaseFirestore db = FirebaseFirestore.instance;
 
-  List<EventModel> get allEvents => events; // 全てのイベントを取得
+late final CollectionReference docRef;
+late List<EventModel> events;
 
-  // イベントのフィルタリングや検索機能を追加する場合はここにロジックを追加
-  List<EventModel> filterEvents(String query) {
-    return events.where((event) => event.place.contains(query)).toList();
-  }
+EventListViewmodel() {
+  docRef = db.collection('events');
+}
+
+// イベント一覧を取得する
+Future<void> getEvents() async {
+  final querySnapshot = await docRef.get();
+  
+  events = querySnapshot.docs.map((doc) {
+    final data = doc.data() as Map<String, dynamic>;
+    return EventModel(
+      eid: data['eid'],
+      position: data['position'],
+      imagePath: data['imagePath'],
+      place: data['place'],
+      date: data['date'],
+    );
+  }).toList();
+}
 }

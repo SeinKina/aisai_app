@@ -6,8 +6,8 @@ class EventDetailComplete extends StatefulWidget {
   final String place;
   final String date;
 
-  EventDetailComplete(
-      {required this.image, required this.place, required this.date});
+  const EventDetailComplete(
+      {super.key, required this.image, required this.place, required this.date});
 
   @override
   _EventDetailCompleteState createState() => _EventDetailCompleteState();
@@ -40,7 +40,7 @@ class _EventDetailCompleteState extends State<EventDetailComplete> {
         return Stack(
           children: [
             // ダイアログ
-            Center(
+            const Center(
               child: ClearDialog(),
             ),
             // 紙吹雪アニメーションをダイアログの上に配置
@@ -65,29 +65,29 @@ class _EventDetailCompleteState extends State<EventDetailComplete> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('イベント詳細'),
+        title: const Text('イベント詳細'),
       ),
       body: Column(
         children: [
           Image.asset(widget.image),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             '開催場所: ${widget.place}',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             '開催日: ${widget.date}',
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
               onPressed: _showClearDialog, // ダイアログと紙吹雪を表示
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                minimumSize: const Size(double.infinity, 50), // ボタンを幅いっぱいにする
               ),
-              child: Text('イベント完了'),
+              child: const Text('イベント完了'),
             ),
           ),
         ],
@@ -108,24 +108,24 @@ class ClearDialog extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
+            const Text(
               'クリア！',
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Image.asset('assets/image/hotel.png'),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context); // ダイアログを閉じる
               },
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                minimumSize: const Size(double.infinity, 50), // ボタンを幅いっぱいにする
               ),
-              child: Text('戻る'),
+              child: const Text('戻る'),
             ),
           ],
         ),

@@ -2,6 +2,8 @@ import 'package:aisai_app/chat_page.dart';
 import 'package:flutter/material.dart';
 
 class DMListPage extends StatefulWidget {
+  const DMListPage({super.key});
+
   @override
   _DMListPageState createState() => _DMListPageState();
 }
@@ -9,9 +11,9 @@ class DMListPage extends StatefulWidget {
 class _DMListPageState extends State<DMListPage> {
   // 仮のDMデータ
   List<Map<String, dynamic>> dmList = [
-    {'name': '田中 太郎', 'icon': 'assets/image/user1.png', 'lastMessageTime': DateTime.now().subtract(Duration(minutes: 10))},
-    {'name': '山田 花子', 'icon': 'assets/image/user2.png', 'lastMessageTime': DateTime.now().subtract(Duration(hours: 1))},
-    {'name': '佐藤 次郎', 'icon': 'assets/image/user3.png', 'lastMessageTime': DateTime.now().subtract(Duration(days: 1))},
+    {'name': '田中 太郎', 'icon': 'assets/image/user1.png', 'lastMessageTime': DateTime.now().subtract(const Duration(minutes: 10))},
+    {'name': '山田 花子', 'icon': 'assets/image/user2.png', 'lastMessageTime': DateTime.now().subtract(const Duration(hours: 1))},
+    {'name': '佐藤 次郎', 'icon': 'assets/image/user3.png', 'lastMessageTime': DateTime.now().subtract(const Duration(days: 1))},
   ];
 
   @override
@@ -21,7 +23,7 @@ class _DMListPageState extends State<DMListPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('DM一覧'),
+        title: const Text('DM一覧'),
       ),
       body: ListView.builder(
         itemCount: dmList.length,
@@ -33,7 +35,7 @@ class _DMListPageState extends State<DMListPage> {
             title: Text(dmList[index]['name']),
             subtitle: Text(
               'Last message: ${dmList[index]['lastMessageTime']}',
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
             ),
             onTap: () {
               // DM詳細ページへ遷移する処理を書く
