@@ -14,6 +14,10 @@ class UserModel {
     required this.gender,
     required this.bio,
     this.profileImagePath,
-    this.backgroundImagePath,
+    this.backgroundImagePath, required String email, required String password,
   });
+
+  set password(String password) {}
+
+  set email(String email) {}
 }

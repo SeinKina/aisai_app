@@ -1,8 +1,6 @@
+import 'package:aisai_app/view/user/user_profile_create_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../user/profile_create_screen.dart';
-
-
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -93,15 +91,16 @@ class _LoginScreenState extends State<LoginScreen> {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ProfileCreateScreen()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ProfileCreateScreen()));
                 // Email/Password login action
               },
               style: ElevatedButton.styleFrom(
                 foregroundColor: const Color.fromARGB(255, 255, 255, 255),
                 backgroundColor: const Color.fromARGB(255, 55, 146, 226),
-                minimumSize: const Size(double.infinity, 50), // Full width button
+                minimumSize:
+                    const Size(double.infinity, 50), // Full width button
               ),
               child: const Text('Login'),
             ),

@@ -1,12 +1,10 @@
-import 'package:aisai_app/model/user_model/user_model.dart';
+import 'package:aisai_app/view/mypage/viewmodel/my_profile_screen_viewmodel.dart';
 import 'package:flutter/material.dart';
 
-import 'viewmodel/user_profile_viewmodel.dart';
+class MyProfileScreen extends StatelessWidget {
+  final MyProfileScreenViewModel viewModel;
 
-class UserProfileScreen extends StatelessWidget {
-  const UserProfileScreen({super.key, required this.viewModel, required UserModel user});
-
-  final UserProfileViewModel viewModel;
+  const MyProfileScreen({super.key, required this.viewModel, required String userName, required String userLocation, required String userOccupation, required String eventName, required String eventDate, required int userAge, required String eventLocation});
 
   @override
   Widget build(BuildContext context) {
@@ -70,11 +68,14 @@ class UserProfileScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        Text('年齢: ${viewModel.userAge}', style: const TextStyle(fontSize: 16)),
+                        Text('年齢: ${viewModel.userAge}',
+                            style: const TextStyle(fontSize: 16)),
                         const SizedBox(height: 8),
-                        Text('居住地: ${viewModel.userLocation}', style: const TextStyle(fontSize: 16)),
+                        Text('居住地: ${viewModel.userLocation}',
+                            style: const TextStyle(fontSize: 16)),
                         const SizedBox(height: 8),
-                        Text('職業: ${viewModel.userOccupation}', style: const TextStyle(fontSize: 16)),
+                        Text('職業: ${viewModel.userOccupation}',
+                            style: const TextStyle(fontSize: 16)),
                       ],
                     ),
                   ),
@@ -108,7 +109,8 @@ class UserProfileScreen extends StatelessWidget {
                             height: 200,
                             decoration: const BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage('assets/image/event_background.jpg'),
+                                image: AssetImage(
+                                    'assets/image/event_background.jpg'),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -132,7 +134,7 @@ class UserProfileScreen extends StatelessWidget {
                                   const Icon(Icons.calendar_today, size: 16),
                                   const SizedBox(width: 8),
                                   Text(
-                                    '日時: ${viewModel.eventDate}',
+                                    '日時: ${viewModel.eventName}',
                                     style: const TextStyle(fontSize: 16),
                                   ),
                                 ],
