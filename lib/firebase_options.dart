@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -54,15 +45,52 @@ class DefaultFirebaseOptions {
     appId: '1:650935915807:android:6cb9fa57db4059ab040c2a',
     messagingSenderId: '650935915807',
     projectId: 'aisai-app',
+    databaseURL: 'https://aisai-app-default-rtdb.firebaseio.com',
     storageBucket: 'aisai-app.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBae_MHEr_5meeEDbc4MDxGEx6O85y4u6Q',
-    appId: '1:650935915807:ios:c54bf0b5ca327335040c2a',
+    appId: '1:650935915807:ios:48bb47fd90f4b334040c2a',
     messagingSenderId: '650935915807',
     projectId: 'aisai-app',
+    databaseURL: 'https://aisai-app-default-rtdb.firebaseio.com',
     storageBucket: 'aisai-app.appspot.com',
+    iosClientId: '650935915807-230pt14f6u0ksq1tp3cns5t6708uap7g.apps.googleusercontent.com',
     iosBundleId: 'com.example.aisaiApp',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDg9Qf5zYbyZj0SHne5LR2H1TCCxhBY2rs',
+    appId: '1:650935915807:web:b0ba27f074e1c264040c2a',
+    messagingSenderId: '650935915807',
+    projectId: 'aisai-app',
+    authDomain: 'aisai-app.firebaseapp.com',
+    databaseURL: 'https://aisai-app-default-rtdb.firebaseio.com',
+    storageBucket: 'aisai-app.appspot.com',
+    measurementId: 'G-G22T3JZ5EL',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBae_MHEr_5meeEDbc4MDxGEx6O85y4u6Q',
+    appId: '1:650935915807:ios:48bb47fd90f4b334040c2a',
+    messagingSenderId: '650935915807',
+    projectId: 'aisai-app',
+    databaseURL: 'https://aisai-app-default-rtdb.firebaseio.com',
+    storageBucket: 'aisai-app.appspot.com',
+    iosClientId: '650935915807-230pt14f6u0ksq1tp3cns5t6708uap7g.apps.googleusercontent.com',
+    iosBundleId: 'com.example.aisaiApp',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDg9Qf5zYbyZj0SHne5LR2H1TCCxhBY2rs',
+    appId: '1:650935915807:web:a2ca1d95415f6589040c2a',
+    messagingSenderId: '650935915807',
+    projectId: 'aisai-app',
+    authDomain: 'aisai-app.firebaseapp.com',
+    databaseURL: 'https://aisai-app-default-rtdb.firebaseio.com',
+    storageBucket: 'aisai-app.appspot.com',
+    measurementId: 'G-NQLTKNF8KP',
+  );
+
 }
