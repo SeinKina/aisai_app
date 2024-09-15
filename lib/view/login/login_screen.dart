@@ -1,8 +1,8 @@
+import 'package:aisai_app/view/user/user_profile_create_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter/material.dart';
-import 'package:aisai_app/view/user/user_profile_create_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -25,7 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
       }
 
       // Google認証情報の取得
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
       // FirebaseにGoogleの認証情報を渡す
       final OAuthCredential credential = GoogleAuthProvider.credential(
@@ -56,25 +57,23 @@ class _LoginScreenState extends State<LoginScreen> {
         toolbarHeight: 250,
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         centerTitle: true,
-        title: const Column(
+        title: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 10),
-            Text(
-              'AISAI',
-              style: TextStyle(
-                color: Color.fromARGB(255, 236, 97, 144),
-                fontSize: 65, // フォントサイズを大きく
-                fontWeight: FontWeight.bold, // 文字を太く
-              ),
+            const SizedBox(height: 10),
+            Image.asset(
+              'assets/image/aisai_icon.png',
+              height: 180, // 画像の高さを指定
             ),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'Login',
               style: TextStyle(
                 fontSize: 20, // フォントサイズを大きく
                 fontWeight: FontWeight.bold, // 文字を太く
               ),
             ),
+            const SizedBox(height: 10),
           ],
         ),
       ),
