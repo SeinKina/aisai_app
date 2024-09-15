@@ -81,7 +81,9 @@ class ProfileCreateScreen extends StatelessWidget {
                             decoration: InputDecoration(
                               labelText: '名前',
                               filled: true,
-                              fillColor: Colors.white.withOpacity(0.8),
+                              fillColor:
+                                  const Color.fromARGB(255, 255, 222, 251)
+                                      .withOpacity(0.8),
                             ),
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -111,7 +113,9 @@ class ProfileCreateScreen extends StatelessWidget {
                             decoration: InputDecoration(
                               labelText: '年齢',
                               filled: true,
-                              fillColor: Colors.white.withOpacity(0.8),
+                              fillColor:
+                                  const Color.fromARGB(255, 255, 222, 251)
+                                      .withOpacity(0.8),
                             ),
                             validator: (value) {
                               if (value!.isEmpty) {
@@ -141,7 +145,9 @@ class ProfileCreateScreen extends StatelessWidget {
                             decoration: InputDecoration(
                               labelText: '性別',
                               filled: true,
-                              fillColor: Colors.white.withOpacity(0.8),
+                              fillColor:
+                                  const Color.fromARGB(255, 255, 222, 251)
+                                      .withOpacity(0.8),
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -154,7 +160,9 @@ class ProfileCreateScreen extends StatelessWidget {
                               labelText: '自己紹介',
                               alignLabelWithHint: true,
                               filled: true,
-                              fillColor: Colors.white.withOpacity(0.8),
+                              fillColor:
+                                  const Color.fromARGB(255, 255, 222, 251)
+                                      .withOpacity(0.8),
                             ),
                             validator: (value) {
                               // 自己紹介は必須ではないので、常にnullを返す

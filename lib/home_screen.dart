@@ -49,12 +49,12 @@ class HomeScreenState extends State<HomeScreen> {
             label: 'Event List',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'Event List',
+            icon: Icon(Icons.forum),
+            label: 'DM',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.deepPurple,
+        selectedItemColor: const Color.fromARGB(255, 239, 96, 227),
         onTap: _onItemTapped,
       ),
     );
