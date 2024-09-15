@@ -20,7 +20,7 @@ class ProfileCreateViewModel with ChangeNotifier {
     userLocation: '',
     userOccpation: '',
     youthGroupFlag: false,
-    seinennkai: '非会員',  userOccupation: '',
+    seinennkai: '非会員',
   );
 
   File? _backgroundImage;

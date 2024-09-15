@@ -34,7 +34,6 @@ class UserModel {
     required this.seinennkai,
     required this.email,
     required this.password,
-    required String userOccupation,
   });
 
   set setPassword(String password) {}
