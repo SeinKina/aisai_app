@@ -3,25 +3,46 @@ import 'package:flutter/material.dart';
 class UserProfileSlider extends StatelessWidget {
   final List<Map<String, String>> userProfiles = <Map<String, String>>[
     {
-      'image': 'assets/image/event.jpg',
-      'icon': 'assets/image/youngman_29.png',
-      'name': 'Taro Yamada',
-      'age': '29',
-      'hometown': 'Okinawa',
+      'image': 'assets/image/us4.jpg',
+      'icon': 'assets/image/us4.jpg',
+      'name': 'Umeko Tuda',
+      'age': '23',
+      'hometown': 'Hukuoka',
     },
     {
-      'image': 'assets/image/backgroundimage.png',
-      'icon': 'assets/image/event.jpg',
-      'name': 'Hanako Suzuki',
+      'image': 'assets/image/us1.png',
+      'icon': 'assets/image/us1.png',
+      'name': 'Keiko miyagi',
       'age': '25',
       'hometown': 'Tokyo',
     },
     {
-      'image': 'assets/image/event.jpg',
-      'icon': 'assets/image/event.jpg',
-      'name': 'John Doe',
-      'age': '30',
+      'image': 'assets/image/us2.jpg',
+      'icon': 'assets/image/us2.jpg',
+      'name': 'Sano Miko',
+      'age': '28',
       'hometown': 'New York',
+    },
+    {
+      'image': 'assets/image/us3.jpg',
+      'icon': 'assets/image/us3.jpg',
+      'name': 'Kyouko kinnyjou',
+      'age': '25',
+      'hometown': 'Aiti',
+    },
+    {
+      'image': 'assets/image/us5.jpg',
+      'icon': 'assets/image/us5.jpg',
+      'name': 'Mariko kina',
+      'age': '28',
+      'hometown': '21',
+    },
+    {
+      'image': 'assets/image/us6.jpg',
+      'icon': 'assets/image/us6.jpg',
+      'name': 'riko Hujizono',
+      'age': '26',
+      'hometown': 'Saitama',
     },
   ];
 

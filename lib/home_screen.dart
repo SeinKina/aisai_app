@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
 
   // 表示する画面のリスト
   static final List<Widget> _widgetOptions = <Widget>[

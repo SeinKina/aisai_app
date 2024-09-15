@@ -197,7 +197,6 @@ class MyProfileScreen extends StatelessWidget {
                         Builder(
                           builder: (context) => GestureDetector(
                             onTap: () {
-                              // 遷移したいページへのコード。例えば、Navigatorを使用する場合:
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -205,7 +204,7 @@ class MyProfileScreen extends StatelessWidget {
                                     image: 'assets/image/event_background.jpg',
                                     place: viewModel.eventLocation,
                                     date: viewModel.eventDate,
-                                  ), // 次のページのウィジェットを指定
+                                  ),
                                 ),
                               );
                             },
@@ -252,11 +251,135 @@ class MyProfileScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                )
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'クエスト報酬',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Card(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(10.0),
+                          ),
+                          child: Container(
+                            width: double.infinity,
+                            height: 200,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/image/hotel.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Builder(
+                          builder: (context) => GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return const RewardsDialog();
+                                },
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    viewModel.eventName,
+                                    style: const TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.calendar_today,
+                                          size: 16),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        '日時: ${viewModel.eventDate}',
+                                        style: const TextStyle(fontSize: 16),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.location_on, size: 16),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        '場所: ${viewModel.eventLocation}',
+                                        style: const TextStyle(fontSize: 16),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class RewardsDialog extends StatelessWidget {
+  const RewardsDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              '報酬を受け取りました！',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            Image.asset('assets/image/hotel.png'),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('閉じる'),
+            ),
+          ],
+        ),
       ),
     );
   }

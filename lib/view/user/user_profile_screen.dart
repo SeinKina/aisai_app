@@ -32,7 +32,7 @@ class UserProfileScreen extends StatelessWidget {
                       left: 0,
                       right: 0,
                       child: Image.asset(
-                        'assets/image/backgroundimage.png',
+                        'assets/image/us4.jpg',
                         fit: BoxFit.cover,
                         height: constraints.maxWidth > 600 ? 400 : 300,
                       ),
@@ -47,7 +47,7 @@ class UserProfileScreen extends StatelessWidget {
                             CircleAvatar(
                               radius: 60,
                               backgroundImage:
-                                  AssetImage('assets/image/youngman_29.png'),
+                                  AssetImage('assets/image/us4.jpg'),
                             ),
                           ],
                         ),

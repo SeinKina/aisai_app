@@ -14,7 +14,7 @@ class EventSelectScreenState extends State<EventSelectScreen> {
 
   // イベント情報（仮のデータ）
   final List<Map<String, String>> event = [
-    {'image': 'assets/image/event.jpg', 'place': '東京', 'date': '2024-09-15'},
+    {'image': 'assets/image/event.jpg', 'place': '', 'date': '2024-09-15'},
     {'image': 'assets/image/event.jpg', 'place': '大阪', 'date': '2024-09-16'},
     {'image': 'assets/image/event.jpg', 'place': '京都', 'date': '2024-09-17'},
     {'image': 'assets/image/event.jpg', 'place': '福岡', 'date': '2024-09-18'},
