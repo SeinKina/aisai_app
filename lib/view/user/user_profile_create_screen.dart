@@ -82,7 +82,7 @@ class ProfileCreateScreen extends StatelessWidget {
                               labelText: '名前',
                               filled: true,
                               fillColor:
-                                  const Color.fromARGB(255, 255, 222, 251)
+                                  const Color.fromARGB(255, 255, 255, 255)
                                       .withOpacity(0.8),
                             ),
                             validator: (value) {
@@ -114,7 +114,7 @@ class ProfileCreateScreen extends StatelessWidget {
                               labelText: '年齢',
                               filled: true,
                               fillColor:
-                                  const Color.fromARGB(255, 255, 222, 251)
+                                  const Color.fromARGB(255, 255, 255, 255)
                                       .withOpacity(0.8),
                             ),
                             validator: (value) {
@@ -146,7 +146,28 @@ class ProfileCreateScreen extends StatelessWidget {
                               labelText: '性別',
                               filled: true,
                               fillColor:
-                                  const Color.fromARGB(255, 255, 222, 251)
+                                  const Color.fromARGB(255, 255, 255, 255)
+                                      .withOpacity(0.8),
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          DropdownButtonFormField(
+                            value: viewModel.user.seinennkai,
+                            items:
+                                viewModel.user.seinennkais.map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              viewModel.updateSeinennkai(newValue!);
+                            },
+                            decoration: InputDecoration(
+                              labelText: '青年会選択',
+                              filled: true,
+                              fillColor:
+                                  const Color.fromARGB(255, 254, 254, 254)
                                       .withOpacity(0.8),
                             ),
                           ),
@@ -161,7 +182,7 @@ class ProfileCreateScreen extends StatelessWidget {
                               alignLabelWithHint: true,
                               filled: true,
                               fillColor:
-                                  const Color.fromARGB(255, 255, 222, 251)
+                                  const Color.fromARGB(255, 255, 255, 255)
                                       .withOpacity(0.8),
                             ),
                             validator: (value) {

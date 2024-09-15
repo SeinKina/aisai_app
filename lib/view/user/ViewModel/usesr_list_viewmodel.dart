@@ -17,6 +17,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
       UserModel(
@@ -33,6 +34,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
       UserModel(
@@ -49,6 +51,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
       UserModel(
@@ -65,6 +68,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
       UserModel(
@@ -81,6 +85,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
     ],
@@ -99,6 +104,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
       UserModel(
@@ -115,6 +121,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
       UserModel(
@@ -131,6 +138,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
     ],
@@ -149,6 +157,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
       UserModel(
@@ -165,6 +174,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
       UserModel(
@@ -181,6 +191,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
       UserModel(
@@ -197,6 +208,7 @@ class UserListViewModel {
         userLocation: '',
         userOccupation: '',
         youthGroupFlag: false,
+        seinennkai: '非会員',
         userOccpation: '',
       ),
     ],

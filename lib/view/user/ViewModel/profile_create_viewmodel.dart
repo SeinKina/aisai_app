@@ -19,7 +19,8 @@ class ProfileCreateViewModel with ChangeNotifier {
     questModel: null,
     userLocation: '',
     userOccpation: '',
-    youthGroupFlag: false, userOccupation: '',
+    youthGroupFlag: false,
+    seinennkai: '非会員',  userOccupation: '',
   );
 
   File? _backgroundImage;
@@ -56,6 +57,11 @@ class ProfileCreateViewModel with ChangeNotifier {
 
   void updateGender(String newGender) {
     user.gender = newGender;
+    notifyListeners();
+  }
+
+  void updateSeinennkai(String newSeinennkai) {
+    user.seinennkai = newSeinennkai;
     notifyListeners();
   }
 
