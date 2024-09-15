@@ -6,7 +6,22 @@ import 'package:image_picker/image_picker.dart';
 
 class ProfileCreateViewModel with ChangeNotifier {
   final ImagePicker _picker = ImagePicker();
-  UserModel user = UserModel(name: '', age: 0, gender: '男性', bio: '', email: '', password: '');
+  // UserModel user = UserModel(name: '', age: 0, gender: '男性', bio: '', email: '', password: '');
+  UserModel user = UserModel(
+    uid: '',
+    name: '',
+    age: 0,
+    gender: '男性',
+    bio: '',
+    profileImagePath: '',
+    backgroundImagePath: '',
+    questModel: null,
+    userLocation: '',
+    userOccpation: '',
+    youthGroupFlag: false,
+    email: '',
+    password: ''
+  );
 
   File? _backgroundImage;
   File? _profileImage;
