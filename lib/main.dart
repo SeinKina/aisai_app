@@ -1,14 +1,12 @@
 import 'package:aisai_app/app.dart';
-import 'package:firebase_core/firebase_core.dart'; // Firebaseのコアパッケージをインポート
-import 'package:flutter/material.dart'; // Flutterのマテリアルパッケージをインポート
-
-import 'firebase_options.dart'; // Firebaseのオプションをインポート
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'firebase_options.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Flutterウィジェットの初期化を確実にする
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options:
-        DefaultFirebaseOptions.currentPlatform, // プラットフォーム固有のオプションでFirebaseを初期化
+    options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp()); // MyAppウィジェットを実行
+  runApp(const MyApp());
 }
