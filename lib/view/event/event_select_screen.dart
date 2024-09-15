@@ -163,7 +163,7 @@ class EventSelectScreenState extends State<EventSelectScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => HomeScreen()), // ホーム画面に遷移
+                            builder: (context) => const HomeScreen()), // ホーム画面に遷移
                       );
                     }
                   : null, // イベントが選択されていないときは無効

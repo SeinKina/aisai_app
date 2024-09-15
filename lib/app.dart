@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
               userAge: 0,
               eventLocation: '',
             ), // マイプ
-        '/chat': (context) => ChatPage(
+        '/chat': (context) => const ChatPage(
               userName: '',
               userImage: '',
             ), // マイプロフィール画面ロフィール画面
