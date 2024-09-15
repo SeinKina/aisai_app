@@ -12,6 +12,7 @@ class EventListScreen extends StatefulWidget {
 }
 
 class EventListScreenState extends State<EventListScreen> {
+  
   late List<EventModel> events = [];
   final EventListViewmodel viewModel = EventListViewmodel();
   bool isLoading = true;
