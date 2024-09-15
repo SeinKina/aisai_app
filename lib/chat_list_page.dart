@@ -14,17 +14,17 @@ class _DMListPageState extends State<DMListPage> {
     {
       'name': '田中 太郎',
       'icon': 'assets/image/youngman_29.png',
-      'lastMessageTime': DateTime.now().subtract(Duration(minutes: 10))
+      'lastMessageTime': DateTime.now().subtract(const Duration(minutes: 10))
     },
     {
       'name': '山田 花子',
       'icon': 'assets/image/youngman_29.png',
-      'lastMessageTime': DateTime.now().subtract(Duration(hours: 1))
+      'lastMessageTime': DateTime.now().subtract(const Duration(hours: 1))
     },
     {
       'name': '佐藤 次郎',
       'icon': 'assets/image/youngman_29.png',
-      'lastMessageTime': DateTime.now().subtract(Duration(days: 1))
+      'lastMessageTime': DateTime.now().subtract(const Duration(days: 1))
     },
   ];
 
@@ -35,7 +35,7 @@ class _DMListPageState extends State<DMListPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('DM一覧'),
+        title: const Text('DM一覧'),
         automaticallyImplyLeading: false,
       ),
       body: ListView.builder(
