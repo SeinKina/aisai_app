@@ -12,10 +12,12 @@ class UserModel {
   String? userLocation;
   String userOccpation;
   bool youthGroupFlag;
+  String seinennkai;
   String email;
   String password;
 
   final List<String> genders = ['男性', '女性', 'その他'];
+  final List<String> seinennkais = ['非会員', '青年会会員'];
 
   UserModel({
     required this.uid,
@@ -29,6 +31,7 @@ class UserModel {
     required this.userLocation,
     required this.userOccpation,
     required this.youthGroupFlag,
+    required this.seinennkai,
     required this.email,
     required this.password,
   });
