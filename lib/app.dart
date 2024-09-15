@@ -1,5 +1,6 @@
 import 'package:aisai_app/chat_page.dart';
 import 'package:aisai_app/home_screen.dart';
+import 'package:aisai_app/top/top_page.dart';
 import 'package:aisai_app/view/event/event_list_screen.dart';
 import 'package:aisai_app/view/mypage/viewmodel/my_profile_screen_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,9 @@ class MyApp extends StatelessWidget {
       home: const LoginScreen(),
       routes: {
         '/home': (context) => const HomeScreen(), // ホーム画面のルート
-        '/eventSelect': (context) => const EventListScreen(), // イベント選択画面
+        '/eventlist': (context) => const EventListScreen(), // イベント一覧画面のルート
+        '/eventSelect': (context) => const EventListScreen(), // イ
+        '/top':(context) => UserProfileSlider(),
         '/myprofile': (context) => MyProfileScreen(
               viewModel: MyProfileScreenViewModel(
                   userName: 'John Doe',

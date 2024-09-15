@@ -1,3 +1,5 @@
+import 'package:aisai_app/home_screen.dart';
+import 'package:aisai_app/top/top_page.dart';
 import 'package:flutter/material.dart';
 
 class EventSelectScreen extends StatefulWidget {
@@ -121,7 +123,10 @@ class EventSelectScreenState extends State<EventSelectScreen> {
             child: ElevatedButton(
               onPressed: _selectedEventIndex != null
                   ? () {
-                      Navigator.pushReplacementNamed(context, '/home'); // ホーム画面に遷移
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()), // ホーム画面に遷移
+                      );
                     }
                   : null, // イベントが選択されていないときは無効
               style: ElevatedButton.styleFrom(
