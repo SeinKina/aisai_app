@@ -4,21 +4,21 @@ class UserListViewModel {
   final Map<String, List<UserModel>> regionUsers = {
     "おすすめのユーザー": [
       UserModel(
-          name: 'User1',
-          age: 25,
+          name: 'たける',
+          age: 23,
           gender: '男性',
           bio: 'プロフィール1',
           email: '',
           password: 'password1'),
       UserModel(
-          name: 'User2',
+          name: 'momo',
           age: 30,
           gender: '女性',
           bio: 'プロフィール2',
           password: 'password2',
           email: ''),
       UserModel(
-          name: 'User3',
+          name: 'ひよこ',
           age: 28,
           gender: 'その他',
           bio: 'プロフィール3',
@@ -27,9 +27,9 @@ class UserListViewModel {
     ],
     "辺野古エイサー": [
       UserModel(
-          name: 'User4',
+          name: 'nana',
           age: 22,
-          gender: '男性',
+          gender: '女性',
           bio: 'プロフィール4',
           password: 'password4',
           email: ''),
