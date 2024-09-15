@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import './event_detail_file.dart';
 
-class EventlistScreen extends StatefulWidget {
-  const EventlistScreen({super.key});
+import 'event_detail_file.dart';
+
+class EventListScreen extends StatefulWidget {
+  const EventListScreen({super.key});
 
   @override
-  _EventlistScreenState createState() => _EventlistScreenState();
+  EventListScreenState createState() => EventListScreenState();
 }
 
-class _EventlistScreenState extends State<EventlistScreen> {
+class EventListScreenState extends State<EventListScreen> {
   // イベント情報（仮のデータ）
   final List<Map<String, String>> event = [
     {'image': 'assets/image/event.jpg', 'place': '東京', 'date': '2024-09-15'},
@@ -25,9 +26,7 @@ class _EventlistScreenState extends State<EventlistScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('イベント一覧'),
-      ),
+      appBar: AppBar(title: Text("イベント一覧")),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
@@ -46,7 +45,7 @@ class _EventlistScreenState extends State<EventlistScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => EventDetailPage(
-                      image: event[index]['image']!,
+                      image: event[index]['image']!, // 必要な引数を渡す
                       place: event[index]['place']!,
                       date: event[index]['date']!,
                     ),
@@ -103,5 +102,3 @@ class _EventlistScreenState extends State<EventlistScreen> {
     );
   }
 }
-
-

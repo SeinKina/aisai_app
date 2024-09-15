@@ -5,12 +5,17 @@ class EventDetailPage extends StatefulWidget {
   final String place;
   final String date;
 
-  EventDetailPage(
-      {required this.image, required this.place, required this.date});
+  // コンストラクタで引数を受け取る
+  EventDetailPage({
+    required this.image,
+    required this.place,
+    required this.date,
+  });
 
   @override
   _EventDetailPageState createState() => _EventDetailPageState();
 }
+
 
 class _EventDetailPageState extends State<EventDetailPage>
     with SingleTickerProviderStateMixin {

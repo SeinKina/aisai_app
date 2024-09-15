@@ -1,13 +1,18 @@
+import 'package:aisai_app/model/user_model/user_model.dart';
 import 'package:flutter/material.dart';
 
-class UserPage extends StatelessWidget {
-  const UserPage({super.key});
+import 'viewmodel/user_profile_viewmodel.dart';
+
+class UserProfileScreen extends StatelessWidget {
+  const UserProfileScreen({super.key, required this.viewModel, required UserModel user});
+
+  final UserProfileViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('プロフィール'),
+        title: Text(viewModel.userName),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -50,39 +55,26 @@ class UserPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(16.0),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'たろう',
-                          style: TextStyle(
+                          viewModel.userName,
+                          style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 8),
-                        Text(
-                          '年齢: 25歳',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                        Text(
-                          '居住地: 沖縄',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                        Text(
-                          '職業: エンジニア',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
+                        const SizedBox(height: 8),
+                        Text('年齢: ${viewModel.userAge}', style: const TextStyle(fontSize: 16)),
+                        const SizedBox(height: 8),
+                        Text('居住地: ${viewModel.userLocation}', style: const TextStyle(fontSize: 16)),
+                        const SizedBox(height: 8),
+                        Text('職業: ${viewModel.userOccupation}', style: const TextStyle(fontSize: 16)),
                       ],
                     ),
                   ),
@@ -116,52 +108,46 @@ class UserPage extends StatelessWidget {
                             height: 200,
                             decoration: const BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/image/event_background.jpg'),
+                                image: AssetImage('assets/image/event_background.jpg'),
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.all(16.0),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'エイサー',
-                                style: TextStyle(
+                                viewModel.eventName,
+                                style: const TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               Row(
                                 children: [
-                                  Icon(Icons.calendar_today, size: 16),
-                                  SizedBox(width: 8),
+                                  const Icon(Icons.calendar_today, size: 16),
+                                  const SizedBox(width: 8),
                                   Text(
-                                    '日時: 2023年10月10日 18:00',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                    ),
+                                    '日時: ${viewModel.eventDate}',
+                                    style: const TextStyle(fontSize: 16),
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               Row(
                                 children: [
-                                  Icon(Icons.location_on, size: 16),
-                                  SizedBox(width: 8),
+                                  const Icon(Icons.location_on, size: 16),
+                                  const SizedBox(width: 8),
                                   Text(
-                                    '場所: 沖縄市',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                    ),
+                                    '場所: ${viewModel.eventLocation}',
+                                    style: const TextStyle(fontSize: 16),
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
                             ],
                           ),
                         ),
