@@ -24,8 +24,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => const HomeScreen(), // ホーム画面のルート
         '/eventlist': (context) => const EventListScreen(), // イベント一覧画面のルート
-        '/eventSelect': (context) => const EventListScreen(), // イ
-        '/top':(context) => UserProfileSlider(),
+        '/top': (context) => UserProfileSlider(),
         '/myprofile': (context) => MyProfileScreen(
               viewModel: MyProfileScreenViewModel(
                   userName: 'John Doe',
