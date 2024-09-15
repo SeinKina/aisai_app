@@ -14,47 +14,47 @@ class EventSelectScreenState extends State<EventSelectScreen> {
   // イベント情報（仮のデータ）
   final List<Map<String, String>> event = [
     {
-      'image': 'assets/image/event.jpg',
+      'image': 'assets/image/eisa/select_eisa_1.jpg',
       'place': '沖縄全島エイサー',
       'date': '2024-09-15'
     },
     {
-      'image': 'assets/image/event.jpg',
+      'image': 'assets/image/eisa/select_eisa_2.jpg',
       'place': '那覇エイサー',
       'date': '2024-09-16'
     },
     {
-      'image': 'assets/image/event.jpg',
+      'image': 'assets/image/eisa/select_eisa_3.jpg',
       'place': '首里エイサー',
       'date': '2024-09-17'
     },
     {
-      'image': 'assets/image/event.jpg',
+      'image': 'assets/image/eisa/select_eisa_4.jpg',
       'place': '読谷エイサー',
       'date': '2024-09-18'
     },
     {
-      'image': 'assets/image/event.jpg',
+      'image': 'assets/image/eisa/select_eisa_5.jpg',
       'place': '名護エイサー',
       'date': '2024-09-19'
     },
     {
-      'image': 'assets/image/event.jpg',
+      'image': 'assets/image/eisa/select_eisa_6.jpg',
       'place': '石垣島エイサー',
       'date': '2024-09-20'
     },
     {
-      'image': 'assets/image/event.jpg',
+      'image': 'assets/image/eisa/select_eisa_7.jpg',
       'place': '宮古島エイサー',
       'date': '2024-09-21'
     },
     {
-      'image': 'assets/image/event.jpg',
+      'image': 'assets/image/eisa/select_eisa_8.jpg',
       'place': 'うるま市エイサー',
       'date': '2024-09-22'
     },
     {
-      'image': 'assets/image/event.jpg',
+      'image': 'assets/image/eisa/select_eisa_9.jpg',
       'place': '宜野湾エイサー',
       'date': '2024-09-23'
     },
