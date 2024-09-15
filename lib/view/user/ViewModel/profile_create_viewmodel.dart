@@ -19,7 +19,7 @@ class ProfileCreateViewModel with ChangeNotifier {
     questModel: null,
     userLocation: '',
     userOccpation: '',
-    youthGroupFlag: false, userOccupation: '',
+    youthGroupFlag: false, 
   );
 
   File? _backgroundImage;

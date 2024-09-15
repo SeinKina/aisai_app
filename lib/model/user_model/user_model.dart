@@ -15,8 +15,6 @@ class UserModel {
   String email;
   String password;
 
-  
-
   final List<String> genders = ['男性', '女性', 'その他'];
 
   UserModel({
@@ -32,7 +30,7 @@ class UserModel {
     required this.userOccpation,
     required this.youthGroupFlag,
     required this.email,
-    required this.password, required String userOccupation,
+    required this.password,
   });
 
   set setPassword(String password) {}
