@@ -42,7 +42,7 @@ class EventListScreenState extends State<EventListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("イベント一覧"),
+        title: const Text("イベント一覧"),
         automaticallyImplyLeading: false,
       ),
       body: Padding(

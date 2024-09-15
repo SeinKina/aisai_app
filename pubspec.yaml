@@ -81,6 +81,8 @@ flutter:
     - assets/image/eisa/select_eisa_7.jpg
     - assets/image/eisa/select_eisa_8.jpg
     - assets/image/eisa/select_eisa_9.jpg
+    - assets\image\aisai_icon.png
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

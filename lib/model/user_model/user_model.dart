@@ -1,4 +1,5 @@
 import 'package:aisai_app/model/quest_model/quest_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel {
   String uid;
@@ -39,4 +40,6 @@ class UserModel {
   set setPassword(String password) {}
 
   set setEmail(String email) {}
+
+  static fromFirebaseUser(User user) {}
 }
