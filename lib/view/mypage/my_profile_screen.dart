@@ -1,15 +1,24 @@
+import 'package:aisai_app/view/event/event_detail_complete.dart';
 import 'package:aisai_app/view/mypage/viewmodel/my_profile_screen_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class MyProfileScreen extends StatelessWidget {
   final MyProfileScreenViewModel viewModel;
 
-  const MyProfileScreen({super.key, required this.viewModel, required String userName, required String userLocation, required String userOccupation, required String eventName, required String eventDate, required int userAge, required String eventLocation});
+  const MyProfileScreen(
+      {super.key,
+      required this.viewModel,
+      required String userName,
+      required String userLocation,
+      required String userOccupation,
+      required String eventName,
+      required String eventDate,
+      required int userAge,
+      required String eventLocation});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(
@@ -154,7 +163,7 @@ class MyProfileScreen extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '開催中のイベント',
+                      '進行中のイベント',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -185,43 +194,61 @@ class MyProfileScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                viewModel.eventName,
-                                style: const TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
+                        Builder(
+                          builder: (context) => GestureDetector(
+                            onTap: () {
+                              // 遷移したいページへのコード。例えば、Navigatorを使用する場合:
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => EventDetailComplete(
+                                    image: 'assets/image/event_background.jpg',
+                                    place: viewModel.eventLocation,
+                                    date: viewModel.eventDate,
+                                  ), // 次のページのウィジェットを指定
                                 ),
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Icon(Icons.calendar_today, size: 16),
-                                  const SizedBox(width: 8),
                                   Text(
-                                    '日時: ${viewModel.eventDate}',
-                                    style: const TextStyle(fontSize: 16),
+                                    viewModel.eventName,
+                                    style: const TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.calendar_today,
+                                          size: 16),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        '日時: ${viewModel.eventDate}',
+                                        style: const TextStyle(fontSize: 16),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.location_on, size: 16),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        '場所: ${viewModel.eventLocation}',
+                                        style: const TextStyle(fontSize: 16),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  const Icon(Icons.location_on, size: 16),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    '場所: ${viewModel.eventLocation}',
-                                    style: const TextStyle(fontSize: 16),
-                                  ),
-                                ],
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ),

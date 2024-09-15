@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
+import 'package:flutter/material.dart';
 
 class EventDetailComplete extends StatefulWidget {
   final String image;
@@ -67,30 +67,43 @@ class _EventDetailCompleteState extends State<EventDetailComplete> {
       appBar: AppBar(
         title: const Text('イベント詳細'),
       ),
-      body: Column(
-        children: [
-          Image.asset(widget.image),
-          const SizedBox(height: 16),
-          Text(
-            '開催場所: ${widget.place}',
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            '開催日: ${widget.date}',
-            style: const TextStyle(fontSize: 20),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton(
-              onPressed: _showClearDialog, // ダイアログと紙吹雪を表示
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50), // ボタンを幅いっぱいにする
-              ),
-              child: const Text('イベント完了'),
+      body: SingleChildScrollView(
+        // ここでスクロール可能に
+        child: Column(
+          children: [
+            Image.asset(widget.image),
+            SizedBox(height: 16),
+            Text(
+              '開催場所: ${widget.place}',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-          ),
-        ],
+            SizedBox(height: 16),
+            Text(
+              '開催日: ${widget.date}',
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 30),
+            Text(
+              '「沖縄全島エイサーまつり」は、毎年旧盆明けの最初の週末に行われる、1956年の「コザ市誕生」を機に「全島エイサーコンクール」としてスタートし、今では沖縄の夏の風物詩として日本を代表する「まつり」の一つとなりました。\n\n'
+              '「まつり」には本島各地から選抜された青年会などの団体や、全国の姉妹都市や協賛団体からのゲストが集結します。会場に鳴り響く三線、歌、太鼓のリズムに酔いしれ、その迫力あるバチさばきに感動しながら、本場のエイサーのだいご味を思う存分味わうことが出来る一大イベントです。\n\n'
+              'まつりは3日間に渡り、金曜日のまつり初日には、国道330号コザ・ゲート通りでの「みちじゅねー」、そして土曜日の中日が沖縄市青年団協議会による「沖縄市青年まつり」日曜日が「本祭」として、全島から集められた青年会による、エイサー大会が沖縄市コザ運動公園で開催されます。\n\n'
+              'また、運動公園サブグラウンドで同時開催される「ビアフェスト」との相乗効果で会場周辺では、夜遅くまで祭りの賑わいが続きます。',
+              style: TextStyle(fontSize: 16), // 文字サイズを調整
+              textAlign: TextAlign.justify, // テキストを左右に整列
+            ),
+            SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton(
+                onPressed: _showClearDialog, // ダイアログと紙吹雪を表示
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                ),
+                child: Text('イベント完了'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

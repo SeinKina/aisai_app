@@ -5,25 +5,37 @@ class EventListViewmodel {
   FirebaseFirestore db = FirebaseFirestore.instance;
 
   late final CollectionReference docRef;
-  late List<EventModel> events;
+  List<EventModel> events = List.empty(growable: true);
 
   EventListViewmodel() {
+    // Firestore内の 'events' コレクションを参照
     docRef = db.collection('events');
   }
 
   // イベント一覧を取得する
   Future<void> getEvents() async {
-    final querySnapshot = await docRef.get();
-    
-    events = querySnapshot.docs.map((doc) {
-      final data = doc.data() as Map<String, dynamic>;
-      return EventModel(
-        eid: data['eid'],
-        position: data['position'],
-        imagePath: data['imagePath'],
-        place: data['place'],
-        date: data['date'],
-      );
-    }).toList();
+    try {
+      final querySnapshot = await docRef.get();
+
+      // Firestoreから取得したドキュメントをイベントモデルに変換
+      events = querySnapshot.docs.map((doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        GeoPoint geoPoint = data['position']; // FirestoreのGeoPoint型
+        print('Fetching event: ${data['eid']} at position: ${geoPoint.latitude}, ${geoPoint.longitude}');
+        
+        return EventModel(
+          eid: data['eid'],
+          position: GeoPoint(geoPoint.latitude, geoPoint.longitude),
+          imagePath: data['imagePath'],
+          place: data['place'],
+          date: data['date'],
+        );
+      }).toList();
+      
+      print('Fetched ${events.length} events'); // イベントの数をデバッグ出力
+
+    } catch (e) {
+      print('Error getting events: $e'); // エラーをコンソールに出力
+    }
   }
 }

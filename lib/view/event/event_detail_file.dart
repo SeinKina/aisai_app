@@ -6,7 +6,8 @@ class EventDetailPage extends StatefulWidget {
   final String date;
 
   // コンストラクタで引数を受け取る
-  const EventDetailPage({super.key, 
+  const EventDetailPage({
+    super.key,
     required this.image,
     required this.place,
     required this.date,
@@ -15,7 +16,6 @@ class EventDetailPage extends StatefulWidget {
   @override
   _EventDetailPageState createState() => _EventDetailPageState();
 }
-
 
 class _EventDetailPageState extends State<EventDetailPage>
     with SingleTickerProviderStateMixin {
@@ -70,7 +70,8 @@ class _EventDetailPageState extends State<EventDetailPage>
                   const SizedBox(height: 16),
                   Text(
                     '開催場所: ${widget.place}',
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
                   Text(
@@ -102,7 +103,8 @@ class _EventDetailPageState extends State<EventDetailPage>
                               );
                             },
                       style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                        minimumSize:
+                            const Size(double.infinity, 50), // ボタンを幅いっぱいにする
                       ),
                       child: Text(_eventCompleted ? 'イベント完了' : 'イベントへGO'),
                     ),
@@ -143,9 +145,9 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
 
   // 仮のユーザーデータ
   final List<Map<String, String>> users = [
-    {'name': '田中 太郎', 'icon': 'assets/image/user1.png'},
-    {'name': '山田 花子', 'icon': 'assets/image/user2.png'},
-    {'name': '佐藤 次郎', 'icon': 'assets/image/user3.png'},
+    {'name': '田中 太郎', 'icon': 'assets/image/youngman_29.png'},
+    {'name': '山田 花子', 'icon': 'assets/image/youngman_29.png'},
+    {'name': '佐藤 次郎', 'icon': 'assets/image/youngman_29.png'},
   ];
 
   @override

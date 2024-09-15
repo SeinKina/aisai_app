@@ -1,5 +1,8 @@
 import 'package:aisai_app/chat_list_page.dart';
+import 'package:aisai_app/top/top_page.dart';
 import 'package:aisai_app/view/event/event_list_screen.dart';
+import 'package:aisai_app/view/mypage/my_profile_screen.dart';
+import 'package:aisai_app/view/mypage/viewmodel/my_profile_screen_viewmodel.dart';
 import 'package:aisai_app/view/user/user_list_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +20,26 @@ class HomeScreenState extends State<HomeScreen> {
   static final List<Widget> _widgetOptions = <Widget>[
     UserListScreen(title: 'User List'),
     const EventListScreen(),
-    const DMListPage()
+    UserProfileSlider(),
+    DMListPage(),
+    MyProfileScreen(
+      viewModel: MyProfileScreenViewModel(
+        userName: 'John Doe',
+        userLocation: 'New York',
+        userOccupation: 'Software Engineer',
+        eventName: 'Flutter Meetup',
+        eventDate: DateTime.now().toIso8601String(),
+        userAge: 30,
+        eventLocation: 'Central Park',
+      ),
+      userName: 'John Doe',
+      userLocation: 'New York',
+      userOccupation: 'Software Engineer',
+      eventName: 'Flutter Meetup',
+      eventDate: DateTime.now().toIso8601String(),
+      userAge: 30,
+      eventLocation: 'Central Park',
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -29,10 +51,6 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Aisai'),
-        automaticallyImplyLeading: false,
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -47,13 +65,25 @@ class HomeScreenState extends State<HomeScreen> {
             label: 'Event List',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.forum),
             label: 'DM',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'My page',
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: const Color.fromARGB(255, 239, 96, 227),
+        unselectedItemColor: Colors.grey,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }

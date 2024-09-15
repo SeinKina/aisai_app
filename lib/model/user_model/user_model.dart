@@ -32,7 +32,7 @@ class UserModel {
     required this.userOccpation,
     required this.youthGroupFlag,
     required this.email,
-    required this.password,
+    required this.password, required String userOccupation,
   });
 
   set setPassword(String password) {}
