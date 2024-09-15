@@ -1,4 +1,5 @@
 import 'package:aisai_app/view/event/event_list_screen.dart';
+import 'package:aisai_app/view/login/login_screen.dart';
 import 'package:aisai_app/view/user/user_list_screen.dart';
 // import 'package:aisai_app/view/chat/chat_screen.dart';
 // import 'package:aisai_app/view/profile/my_profile_screen.dart';
@@ -10,12 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutterデモ',
+      title: 'Aisai',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
@@ -30,9 +31,9 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     UserListScreen(title: 'User List'),
-    EventListScreen(),
+    const EventListScreen(),
     // ChatScreen(title: 'Chat'),
     // MyProfileScreen(title: 'My Profile'),
   ];

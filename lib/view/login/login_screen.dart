@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../user/profile_create_page.dart';
+import '../user/profile_create_screen.dart';
 
 
 
@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const RegisterScreen()));
+                                  builder: (context) => ProfileCreateScreen()));
                 // Email/Password login action
               },
               style: ElevatedButton.styleFrom(

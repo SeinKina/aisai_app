@@ -1,14 +1,14 @@
 import 'package:aisai_app/view/user/user_list_screen.dart';
 import 'package:flutter/material.dart';
 
-class EventScreen extends StatefulWidget {
-  const EventScreen({super.key});
+class EventSelectScreen extends StatefulWidget {
+  const EventSelectScreen({super.key});
 
   @override
-  _EventScreenState createState() => _EventScreenState();
+  EventSelectScreenState createState() => EventSelectScreenState();
 }
 
-class _EventScreenState extends State<EventScreen> {
+class EventSelectScreenState extends State<EventSelectScreen> {
   int? _selectedEventIndex; // 選択されたイベントのインデックス
 
   // イベント情報（仮のデータ）
@@ -125,7 +125,7 @@ class _EventScreenState extends State<EventScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const UserListScreen(
+                              builder: (context) => UserListScreen(
                                     title: '',
                                   )));
                       // Email/Password login action
