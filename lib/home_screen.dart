@@ -21,6 +21,7 @@ class HomeScreenState extends State<HomeScreen> {
     UserListScreen(title: 'User List'),
     EventListScreen(),
     UserProfileSlider(),
+    DMListPage(),
     MyProfileScreen(
       viewModel: MyProfileScreenViewModel(
         userName: 'John Doe',
@@ -39,7 +40,6 @@ class HomeScreenState extends State<HomeScreen> {
       userAge: 30,
       eventLocation: 'Central Park',
     ),
-    DMListPage()
   ];
 
   void _onItemTapped(int index) {
@@ -69,12 +69,12 @@ class HomeScreenState extends State<HomeScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'My page',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.forum),
             label: 'DM',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'My page',
           ),
         ],
         currentIndex: _selectedIndex,
