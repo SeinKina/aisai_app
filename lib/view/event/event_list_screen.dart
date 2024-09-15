@@ -1,7 +1,8 @@
 import 'package:aisai_app/model/eventmodel/event_model.dart';
-import 'package:flutter/material.dart';
-import 'event_detail_file.dart';
 import 'package:aisai_app/view/event/viewmodel/event_list_viewmodel.dart'; // ViewModelのインポート
+import 'package:flutter/material.dart';
+
+import 'event_detail_file.dart';
 
 class EventListScreen extends StatefulWidget {
   const EventListScreen({super.key});
