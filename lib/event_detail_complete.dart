@@ -1,13 +1,65 @@
-import 'package:aisai_app/clear_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:confetti/confetti.dart';
 
-class EventDetailComplete extends StatelessWidget {
+class EventDetailComplete extends StatefulWidget {
   final String image;
   final String place;
   final String date;
 
   EventDetailComplete(
       {required this.image, required this.place, required this.date});
+
+  @override
+  _EventDetailCompleteState createState() => _EventDetailCompleteState();
+}
+
+class _EventDetailCompleteState extends State<EventDetailComplete> {
+  late ConfettiController _confettiController; // 紙吹雪コントローラー
+
+  @override
+  void initState() {
+    super.initState();
+    // ConfettiControllerの初期化
+    _confettiController =
+        ConfettiController(duration: const Duration(seconds: 2)); // 2秒間の紙吹雪
+  }
+
+  @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
+  }
+
+  void _showClearDialog() {
+    // 紙吹雪アニメーションを再生
+    _confettiController.play();
+    // ダイアログを表示
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Stack(
+          children: [
+            // ダイアログ
+            Center(
+              child: ClearDialog(),
+            ),
+            // 紙吹雪アニメーションをダイアログの上に配置
+            Align(
+              alignment: Alignment.topCenter,
+              child: ConfettiWidget(
+                confettiController: _confettiController,
+                blastDirection: -3.14 / 2, // 紙吹雪を上方向に噴出
+                emissionFrequency: 0.05, // 紙吹雪の頻度
+                numberOfParticles: 30, // 紙吹雪の量
+                gravity: 0.3, // 紙吹雪がゆっくり落ちる
+                shouldLoop: false, // アニメーションをループさせない
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,29 +69,21 @@ class EventDetailComplete extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Image.asset(image),
+          Image.asset(widget.image),
           SizedBox(height: 16),
           Text(
-            '開催場所: $place',
+            '開催場所: ${widget.place}',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 16),
           Text(
-            '開催日: $date',
+            '開催日: ${widget.date}',
             style: TextStyle(fontSize: 20),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
-              onPressed: () {
-                showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return ClearDialog();
-                                },
-                              );
-               
-              },
+              onPressed: _showClearDialog, // ダイアログと紙吹雪を表示
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
               ),
@@ -52,4 +96,40 @@ class EventDetailComplete extends StatelessWidget {
   }
 }
 
+class ClearDialog extends StatelessWidget {
+  const ClearDialog({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: Colors.black.withOpacity(0.5), // ダイアログの背景を半透明に設定
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'クリア！',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            SizedBox(height: 16),
+            Image.asset('assets/image/hotel.png'),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context); // ダイアログを閉じる
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(double.infinity, 50), // ボタンを幅いっぱいにする
+              ),
+              child: Text('戻る'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
