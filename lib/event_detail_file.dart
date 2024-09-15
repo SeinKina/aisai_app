@@ -55,7 +55,8 @@ class _EventDetailPageState extends State<EventDetailPage>
       ),
       body: Stack(
         children: [
-          SingleChildScrollView(  // スクロール可能にする
+          SingleChildScrollView(
+            // スクロール可能にする
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -71,15 +72,16 @@ class _EventDetailPageState extends State<EventDetailPage>
                     '開催日: ${widget.date}',
                     style: TextStyle(fontSize: 20),
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: 30),
                   Text(
-                    '「沖縄全島エイサーまつり」は、毎年旧盆明けの最初の週末に行われる、1956年の「コザ市誕生」を機に「全島エイサーコンクール」としてスタートし、今では沖縄の夏の風物詩として日本を代表する「まつり」の一つとなりました。\n'
-                    '「まつり」には本島各地から選抜された青年会などの団体や、全国の姉妹都市や協賛団体からのゲストが集結します。会場に鳴り響く三線、歌、太鼓のリズムに酔いしれ、その迫力あるバチさばきに感動しながら、本場のエイサーのだいご味を思う存分味わうことが出来る一大イベントです。\n'
-                    'まつりは3日間に渡り、金曜日のまつり初日には、国道330号コザ・ゲート通りでの「みちじゅねー」、そして土曜日の中日が沖縄市青年団協議会による「沖縄市青年まつり」日曜日が「本祭」として、全島から集められた青年会による、エイサー大会が沖縄市コザ運動公園で開催されます。\n'
+                    '「沖縄全島エイサーまつり」は、毎年旧盆明けの最初の週末に行われる、1956年の「コザ市誕生」を機に「全島エイサーコンクール」としてスタートし、今では沖縄の夏の風物詩として日本を代表する「まつり」の一つとなりました。\n\n'
+                    '「まつり」には本島各地から選抜された青年会などの団体や、全国の姉妹都市や協賛団体からのゲストが集結します。会場に鳴り響く三線、歌、太鼓のリズムに酔いしれ、その迫力あるバチさばきに感動しながら、本場のエイサーのだいご味を思う存分味わうことが出来る一大イベントです。\n\n'
+                    'まつりは3日間に渡り、金曜日のまつり初日には、国道330号コザ・ゲート通りでの「みちじゅねー」、そして土曜日の中日が沖縄市青年団協議会による「沖縄市青年まつり」日曜日が「本祭」として、全島から集められた青年会による、エイサー大会が沖縄市コザ運動公園で開催されます。\n\n'
                     'また、運動公園サブグラウンドで同時開催される「ビアフェスト」との相乗効果で会場周辺では、夜遅くまで祭りの賑わいが続きます。',
-                    style: TextStyle(fontSize: 16),  // 文字サイズを調整
-                    textAlign: TextAlign.justify,  // テキストを左右に整列
+                    style: TextStyle(fontSize: 16), // 文字サイズを調整
+                    textAlign: TextAlign.justify, // テキストを左右に整列
                   ),
+                  SizedBox(height: 30),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: ElevatedButton(
@@ -89,7 +91,8 @@ class _EventDetailPageState extends State<EventDetailPage>
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return SelectUserDialog(onUserSelected: _onUserSelected);
+                                  return SelectUserDialog(
+                                      onUserSelected: _onUserSelected);
                                 },
                               );
                             },
@@ -151,7 +154,10 @@ class _SelectUserDialogState extends State<SelectUserDialog> {
           children: [
             Text(
               '参加するユーザーを選択',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
             SizedBox(height: 16),
             ListView.builder(
