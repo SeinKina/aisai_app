@@ -1,6 +1,8 @@
 import 'package:aisai_app/view/user/user_profile_create_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -10,64 +12,90 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  // Google Sign-In Method
+  Future<User?> _signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser != null) {
+        final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+
+        // Sign in to Firebase with the Google user credentials
+        UserCredential userCredential = await _auth.signInWithCredential(credential);
+        return userCredential.user;
+      }
+    } catch (e) {
+      print(e); // Handle the error
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 250,
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        centerTitle: true, // タイトルを中央寄せ
+        centerTitle: true,
         title: const Column(
           mainAxisSize: MainAxisSize.min,
-          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(height: 10),
             Text(
               'AISAI',
               style: TextStyle(
                 color: Color.fromARGB(255, 236, 97, 144),
-                fontSize: 65, // フォントサイズを大きく
-                fontWeight: FontWeight.bold, // 文字を太く
+                fontSize: 65,
+                fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               'Login',
               style: TextStyle(
-                fontSize: 20, // フォントサイズを大きく
-                fontWeight: FontWeight.bold, // 文字を太く
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0), // 左右の余白
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // 中央寄せ
-          crossAxisAlignment: CrossAxisAlignment.stretch, // 子ウィジェットを横方向に最大まで広げる
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Google Login Button
             // Google Login Button
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 shadowColor: const Color.fromARGB(0, 255, 255, 255),
-                minimumSize: const Size(50, 50), // ボタンのサイズを指定
-                padding: EdgeInsets.zero, // 余白をなくす
+                minimumSize: const Size(50, 50),
+                padding: EdgeInsets.zero,
               ),
-              onPressed: () {
-                // ボタンが押された時の処理
+              onPressed: () async {
+                User? user = await _signInWithGoogle();
+                if (user != null) {
+                  // Navigate to profile creation screen after successful sign-in
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => ProfileCreateScreen()));
+                }
               },
               child: SizedBox(
-                height: 50, // 画像の高さ
+                height: 50,
                 child: SvgPicture.asset(
                   'assets/image/google.svg',
-                  fit: BoxFit.contain, // 画像がボタンのサイズに合わせてリサイズされない
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
             const SizedBox(height: 40),
 
-            // Email Input Field
+            // Email and Password fields (if needed for email login)
             const TextField(
               decoration: InputDecoration(
                 labelText: 'Email',
@@ -77,7 +105,6 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 40),
 
-            // Password Input Field
             const TextField(
               decoration: InputDecoration(
                 labelText: 'Password',
@@ -90,17 +117,13 @@ class _LoginScreenState extends State<LoginScreen> {
             // Login Button
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ProfileCreateScreen()));
-                // Email/Password login action
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProfileCreateScreen()));
               },
               style: ElevatedButton.styleFrom(
                 foregroundColor: const Color.fromARGB(255, 255, 255, 255),
                 backgroundColor: const Color.fromARGB(255, 55, 146, 226),
-                minimumSize:
-                    const Size(double.infinity, 50), // Full width button
+                minimumSize: const Size(double.infinity, 50),
               ),
               child: const Text('Login'),
             ),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import '../../model/user_model/user_model.dart';
+import 'user_profile_screen.dart'; // UserProfileScreenのインポート
 import 'viewmodel/user_profile_viewmodel.dart';
 import 'viewmodel/usesr_list_viewmodel.dart';
-import 'user_profile_screen.dart'; // UserProfileScreenのインポート
 
 class UserListScreen extends StatelessWidget {
   final String title; // タイトルを受け取るプロパティ
@@ -41,7 +42,10 @@ class UserListScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => UserProfileScreen(user: user, viewModel: UserProfileViewModel(user: user)),
+                                builder: (context) => UserProfileScreen(
+                                    user: user,
+                                    viewModel:
+                                        UserProfileViewModel(user: user)),
                               ),
                             );
                           },
@@ -55,7 +59,7 @@ class UserListScreen extends StatelessWidget {
                                     child: Icon(Icons.person, size: 25.0),
                                   ),
                                   const SizedBox(height: 8.0),
-                                  Text(user.name), // ユーザー名を表示
+                                  Text(user.userName), // ユーザー名を表示
                                 ],
                               ),
                             ),

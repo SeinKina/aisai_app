@@ -128,7 +128,7 @@ class ProfileCreateScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 16),
                           DropdownButtonFormField(
-                            value: viewModel.user.gender,
+                            value: "その他",
                             items: viewModel.user.genders.map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,

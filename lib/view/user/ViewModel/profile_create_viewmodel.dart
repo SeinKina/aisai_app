@@ -6,7 +6,16 @@ import 'package:image_picker/image_picker.dart';
 
 class ProfileCreateViewModel with ChangeNotifier {
   final ImagePicker _picker = ImagePicker();
-  UserModel user = UserModel(name: '', age: 0, gender: '男性', bio: '', email: '', password: '');
+  UserModel user = UserModel(
+      name: '',
+      age: 0,
+      gender: '',
+      uid: '',
+      email: '',
+      password: '',
+      userName: '',
+      youthGroupFlag: false,
+      bio: '');
 
   File? _backgroundImage;
   File? _profileImage;
@@ -31,7 +40,7 @@ class ProfileCreateViewModel with ChangeNotifier {
   }
 
   void updateName(String newName) {
-    user.name = newName;
+    user.userName = newName;
     notifyListeners();
   }
 

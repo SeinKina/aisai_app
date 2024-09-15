@@ -6,7 +6,7 @@ class UserProfileViewModel {
 
   UserProfileViewModel({required this.user});
 
-  String get userName => user.name;
+  String get userName => user.userName;
   String get userAge => '${user.age}歳';
   String get userLocation => '沖縄市'; // 仮の場所
   String get userOccupation => 'エンジニア'; // 仮の職業

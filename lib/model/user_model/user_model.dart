@@ -1,23 +1,28 @@
 class UserModel {
-  String name;
+  String uid;
+  String userName;
   int age;
   String gender;
-  String bio;
+  String email;
+  String password;
+  bool youthGroupFlag;
   String? profileImagePath;
   String? backgroundImagePath;
-
-  final List<String> genders = ['男性', '女性', 'その他'];
+  List<String> genders = ['男性', '女性', 'その他'];
 
   UserModel({
-    required this.name,
+    required this.uid,
+    required this.userName,
     required this.age,
     required this.gender,
-    required this.bio,
+    required this.youthGroupFlag,
     this.profileImagePath,
-    this.backgroundImagePath, required String email, required String password,
+    this.backgroundImagePath,
+    required this.email,
+    required this.password,
+    required String name,
+    required String bio,
   });
 
-  set password(String password) {}
-
-  set email(String email) {}
+  set bio(String bio) {}
 }
