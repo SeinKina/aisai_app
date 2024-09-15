@@ -1,3 +1,4 @@
+import 'package:aisai_app/clear_dialog.dart';
 import 'package:flutter/material.dart';
 
 class EventDetailComplete extends StatelessWidget {
@@ -31,7 +32,12 @@ class EventDetailComplete extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
               onPressed: () {
-                // ダイアログを表示
+                showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return ClearDialog();
+                                },
+                              );
                
               },
               style: ElevatedButton.styleFrom(
