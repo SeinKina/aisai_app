@@ -5,20 +5,57 @@ import '../../model/user_model/user_model.dart';
 import 'user_profile_screen.dart'; // UserProfileScreenのインポート
 import 'viewmodel/user_profile_viewmodel.dart';
 
-class UserListScreen extends StatelessWidget {
-  final String title; // タイトルを受け取るプロパティ
-  final UserListViewModel viewModel = UserListViewModel(); // ViewModelをインスタンス化
-
+class UserListScreen extends StatefulWidget {
+  final String title;
   UserListScreen({super.key, required this.title});
+
+  @override
+  State<UserListScreen> createState() => _UserListScreenState();
+}
+
+class _UserListScreenState extends State<UserListScreen> {
+
+  late List<UserModel> users = [];
+  final UserListViewModel viewModel = UserListViewModel();
+  bool isLoading = true;
+  String? errorMessage;
+
+  late Map<String, List<UserModel>> regionUsers;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUsers();
+    regionUsers = {
+      "おすすめのユーザー": users,
+      "辺野古エイサー": users,
+      "全島エイサー": users,
+    };
+  }
+
+  Future<void> fetchUsers() async {
+    try {
+      await viewModel.getUsers();
+      setState(() {
+        users = viewModel.users;
+        isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        errorMessage = 'データの取得に失敗しました: $e';
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
       ),
       body: ListView(
-        children: viewModel.regionUsers.entries.map((entry) {
+        children: regionUsers.entries.map((entry) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
