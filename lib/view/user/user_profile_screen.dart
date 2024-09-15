@@ -1,8 +1,7 @@
 import 'package:aisai_app/model/user_model/user_model.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import 'ViewModel/user_profile_viewmodel.dart';
+import 'viewmodel/user_profile_viewmodel.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key, required this.viewModel, required UserModel user});

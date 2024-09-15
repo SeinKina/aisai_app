@@ -2,7 +2,7 @@ import 'package:aisai_app/view/event/event_select_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'ViewModel/profile_create_viewmodel.dart';
+import 'viewmodel/profile_create_viewmodel.dart';
 
 class ProfileCreateScreen extends StatelessWidget {
   ProfileCreateScreen({super.key});
@@ -173,7 +173,7 @@ class ProfileCreateScreen extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const EventSelectScreen()),
+                                            EventSelectScreen()),
                                   );
                                 }
                               },

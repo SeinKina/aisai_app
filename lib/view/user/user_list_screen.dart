@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../model/user_model/user_model.dart';
-import 'ViewModel/user_profile_viewmodel.dart';
-import 'ViewModel/usesr_list_viewmodel.dart';
+import 'viewmodel/user_profile_viewmodel.dart';
+import 'viewmodel/usesr_list_viewmodel.dart';
 import 'user_profile_screen.dart'; // UserProfileScreenのインポート
 
 class UserListScreen extends StatelessWidget {
@@ -13,10 +13,6 @@ class UserListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
-      ),
       body: ListView(
         children: viewModel.regionUsers.entries.map((entry) {
           return Column(

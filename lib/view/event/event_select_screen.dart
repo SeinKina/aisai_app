@@ -1,4 +1,3 @@
-import 'package:aisai_app/view/user/user_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class EventSelectScreen extends StatefulWidget {
@@ -122,13 +121,7 @@ class EventSelectScreenState extends State<EventSelectScreen> {
             child: ElevatedButton(
               onPressed: _selectedEventIndex != null
                   ? () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => UserListScreen(
-                                    title: '',
-                                  )));
-                      // Email/Password login action
+                      Navigator.pushReplacementNamed(context, '/home'); // ホーム画面に遷移
                     }
                   : null, // イベントが選択されていないときは無効
               style: ElevatedButton.styleFrom(
