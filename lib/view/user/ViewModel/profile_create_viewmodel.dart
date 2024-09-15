@@ -67,7 +67,9 @@ class ProfileCreateViewModel with ChangeNotifier {
 
   void updateBio(String newBio) {
     user.bio = newBio;
-    notifyListeners();
+  
+
+  void updateSeinennkai(String s) {}  notifyListeners();
   }
 
   bool validateForm(GlobalKey<FormState> formKey) {
