@@ -2,8 +2,9 @@ import 'package:aisai_app/view/mypage/viewmodel/my_profile_screen_viewmodel.dart
 import 'package:flutter/material.dart';
 
 class MyProfileScreen extends StatelessWidget {
+  final MyProfileScreenViewModel viewModel;
 
-  late final MyProfileScreenViewModel viewModel;
+  const MyProfileScreen({super.key, required this.viewModel, required String userName, required String userLocation, required String userOccupation, required String eventName, required String eventDate, required int userAge, required String eventLocation});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,7 @@
 import 'package:aisai_app/view/event/event_list_screen.dart';
+import 'package:aisai_app/view/mypage/viewmodel/my_profile_screen_viewmodel.dart';
 import 'package:aisai_app/view/user/user_list_screen.dart';
+import 'package:aisai_app/view/mypage/my_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,6 +18,24 @@ class HomeScreenState extends State<HomeScreen> {
   static final List<Widget> _widgetOptions = <Widget>[
     UserListScreen(title: 'User List'),
     const EventListScreen(),
+    MyProfileScreen(
+      viewModel: MyProfileScreenViewModel(
+        userName: 'John Doe',
+        userAge: 30,
+        userLocation: 'New York',
+        userOccupation: 'Engineer',
+        eventName: 'Tech Conference',
+        eventDate: '2023-10-01',
+        eventLocation: 'San Francisco',
+      ),
+      userName: 'John Doe',
+      userAge: 30,
+      userLocation: 'New York',
+      userOccupation: 'Engineer',
+      eventName: 'Tech Conference',
+      eventDate: '2023-10-01',
+      eventLocation: 'San Francisco',
+    ), // Add MyProfileScreen to the list
   ];
 
   void _onItemTapped(int index) {
@@ -43,6 +63,10 @@ class HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),
             label: 'Event List',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'My Profile',
           ),
         ],
         currentIndex: _selectedIndex,

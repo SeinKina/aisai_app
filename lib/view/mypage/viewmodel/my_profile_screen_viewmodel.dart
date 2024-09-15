@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class MyProfileScreenViewModel {
   final String userName;
   final int userAge;
