@@ -34,6 +34,13 @@ class UserListScreen extends StatelessWidget {
                   itemCount: entry.value.length,
                   itemBuilder: (context, index) {
                     UserModel user = entry.value[index]; // UserModelのインスタンスを取得
+
+                    if (user.profileImagePath != null) {
+                      if (user.profileImagePath == "") {
+                        user.profileImagePath = "assets/image/us1.png";
+                      }
+                    }
+
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: SizedBox(
@@ -57,10 +64,11 @@ class UserListScreen extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const CircleAvatar(
+                                  CircleAvatar(
                                     radius: 40.0, // アイコンのサイズを少し大きくする
                                     backgroundImage: AssetImage(
-                                        'assets/image/event_background.jpg'), // プレースホルダー画像
+                                      user.profileImagePath ?? "assets/image/us1.png"
+                                    ), // プレースホルダー画像
                                   ),
                                   const SizedBox(height: 8.0),
                                   Text(
