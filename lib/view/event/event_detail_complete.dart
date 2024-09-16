@@ -1,66 +1,53 @@
-import 'package:confetti/confetti.dart';
-import 'package:flutter/material.dart';
+import 'dart:async';
 
+import 'package:flutter/material.dart';
+ 
 class EventDetailComplete extends StatefulWidget {
   final String image;
   final String place;
   final String date;
-
+ 
   const EventDetailComplete(
       {super.key, required this.image, required this.place, required this.date});
-
+ 
   @override
   _EventDetailCompleteState createState() => _EventDetailCompleteState();
 }
-
+ 
 class _EventDetailCompleteState extends State<EventDetailComplete> {
-  late ConfettiController _confettiController; // 紙吹雪コントローラー
-
-  @override
-  void initState() {
-    super.initState();
-    // ConfettiControllerの初期化
-    _confettiController =
-        ConfettiController(duration: const Duration(seconds: 2)); // 2秒間の紙吹雪
-  }
-
+  late Timer _timer;
+  int _remainingTime = 10; // 残り時間（秒）
+ 
   @override
   void dispose() {
-    _confettiController.dispose();
+    _timer.cancel();
     super.dispose();
   }
-
-  void _showClearDialog() {
-    // 紙吹雪アニメーションを再生
-    _confettiController.play();
-    // ダイアログを表示
+ 
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_remainingTime > 0) {
+          _remainingTime--;
+        } else {
+          _timer.cancel(); // タイマーを停止
+          _showFailureDialog(); // イベント失敗のダイアログを表示
+        }
+      });
+    });
+  }
+ 
+  void _showFailureDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Stack(
-          children: [
-            // ダイアログ
-            const Center(
-              child: ClearDialog(),
-            ),
-            // 紙吹雪アニメーションをダイアログの上に配置
-            Align(
-              alignment: Alignment.topCenter,
-              child: ConfettiWidget(
-                confettiController: _confettiController,
-                blastDirection: -3.14 / 2, // 紙吹雪を上方向に噴出
-                emissionFrequency: 0.05, // 紙吹雪の頻度
-                numberOfParticles: 30, // 紙吹雪の量
-                gravity: 0.3, // 紙吹雪がゆっくり落ちる
-                shouldLoop: false, // アニメーションをループさせない
-              ),
-            ),
-          ],
+        return const Center(
+          child: FailureDialog(),
         );
       },
     );
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +55,6 @@ class _EventDetailCompleteState extends State<EventDetailComplete> {
         title: const Text('イベント詳細'),
       ),
       body: SingleChildScrollView(
-        // ここでスクロール可能に
         child: Column(
           children: [
             Image.asset(widget.image),
@@ -95,11 +81,14 @@ class _EventDetailCompleteState extends State<EventDetailComplete> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
-                onPressed: _showClearDialog, // ダイアログと紙吹雪を表示
+                onPressed: () {
+                  _startTimer(); // カウントダウンを開始
+                  _showFailureDialog(); // ダイアログを表示
+                },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(double.infinity, 50), // ボタンを幅いっぱいにする
                 ),
-                child: const Text('イベント完了'),
+                child: const Text('イベント開始'),
               ),
             ),
           ],
@@ -108,10 +97,44 @@ class _EventDetailCompleteState extends State<EventDetailComplete> {
     );
   }
 }
-
-class ClearDialog extends StatelessWidget {
-  const ClearDialog({super.key});
-
+ 
+class FailureDialog extends StatefulWidget {
+  const FailureDialog({super.key});
+ 
+  @override
+  _FailureDialogState createState() => _FailureDialogState();
+}
+ 
+class _FailureDialogState extends State<FailureDialog> {
+  bool _showCrossMark = false;
+  late Timer _crossMarkTimer;
+  int _remainingTime = 10; // 10秒のカウントダウン
+ 
+  @override
+  void initState() {
+    super.initState();
+    _startCountdown();
+  }
+ 
+  void _startCountdown() {
+    _crossMarkTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_remainingTime > 0) {
+          _remainingTime--;
+        } else {
+          _crossMarkTimer.cancel();
+          _showCrossMark = true; // バツマークを表示する
+        }
+      });
+    });
+  }
+ 
+  @override
+  void dispose() {
+    _crossMarkTimer.cancel();
+    super.dispose();
+  }
+ 
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -121,22 +144,44 @@ class ClearDialog extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
-              'クリア！',
-              style: TextStyle(
-                  fontSize: 20,
+            if (_remainingTime > 0)
+              Text(
+                '残り時間: $_remainingTime 秒',
+                style: const TextStyle(
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
+                  color: Colors.white,
+                ),
+              )
+            else
+              const Text(
+                'イベント失敗！',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red,
+                ),
+              ),
             const SizedBox(height: 16),
-            Image.asset('assets/image/hotel.png'),
+            AnimatedCrossFade(
+              firstChild: const SizedBox.shrink(),
+              secondChild: const Icon(
+                Icons.close,
+                color: Colors.red,
+                size: 100,
+              ),
+              crossFadeState: _showCrossMark
+                  ? CrossFadeState.showSecond
+                  : CrossFadeState.showFirst,
+              duration: const Duration(seconds: 1),
+            ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context); // ダイアログを閉じる
               },
               style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50), // ボタンを幅いっぱいにする
+                minimumSize: const Size(double.infinity, 50),
               ),
               child: const Text('戻る'),
             ),
