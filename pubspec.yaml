@@ -82,7 +82,20 @@ flutter:
     - assets/image/eisa/select_eisa_7.jpg
     - assets/image/eisa/select_eisa_8.jpg
     - assets/image/eisa/select_eisa_9.jpg
-    - assets\image\aisai_icon.png
+    - assets/image/aisai_icon.png
+    - assets/image/backgroundimage.png
+    # - assets/image/event_background.png
+    - assets/image/event.jpg
+    - assets/image/google.svg
+    - assets/image/hotel.png
+    - assets/image/us1.png
+    - assets/image/us2.jpg
+    - assets/image/us3.jpg
+    - assets/image/us4.jpg
+    - assets/image/us5.jpg
+    - assets/image/us6.jpg
+    # - assets/image/youngman_29.png
+
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
